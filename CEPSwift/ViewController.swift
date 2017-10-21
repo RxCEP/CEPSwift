@@ -59,7 +59,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // When our first and second rules happen, user is walking! Let's
         // set our backgroung to blue!
         walkingRule1.merge(anotherObservable: walkingRule2).subscribe {
-            self.setWalkBackground()
+            self.setBlueBackground()
         }
         
         // When the speed is to low the user probably stop walking and when
@@ -72,7 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         /// When our stopWalkingRule occurs, the user isn't walking! Let's set
         // our background to red!
         stopWalkingRule.subscribe { (location) in
-            self.setStopBackground()
+            self.setRedBackground()
         }
     }
     
@@ -102,13 +102,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // Our functions to set the background to blue if user is walking or to red if
     // user isn't walking
-    func setWalkBackground() {
+    func setBlueBackground() {
         DispatchQueue.main.async {
             self.view.backgroundColor = UIColor.blue
         }
     }
     
-    func setStopBackground() {
+    func setRedBackground() {
         DispatchQueue.main.async {
             self.view.backgroundColor = UIColor.red
         }
