@@ -9,7 +9,6 @@
 import CoreMotion
 import CoreLocation
 import UIKit
-import RxSwift
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     // UILabels just to show on the screen the speed and the number of steps
