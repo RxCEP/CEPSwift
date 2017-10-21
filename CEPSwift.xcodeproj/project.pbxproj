@@ -18,8 +18,8 @@
 		5EABBA4D1F799AF600F1EFB2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EABBA4C1F799AF600F1EFB2 /* Event.swift */; };
 		5EB7E44C1F924F9700A5130E /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7E44B1F924F9700A5130E /* Window.swift */; };
 		5EB7E44E1F9250A100A5130E /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7E44D1F9250A100A5130E /* Operation.swift */; };
-		5EB7E4501F92559500A5130E /* CEObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7E44F1F92559500A5130E /* CEObservable.swift */; };
-		5EF8D57F1F704889005EF425 /* EventObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8D57E1F704889005EF425 /* EventObservable.swift */; };
+		5EB7E4501F92559500A5130E /* ComplexEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7E44F1F92559500A5130E /* ComplexEvent.swift */; };
+		5EF8D57F1F704889005EF425 /* EventStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8D57E1F704889005EF425 /* EventStream.swift */; };
 		8999714FDD5378DD5B3A1CCC /* Pods_CEPSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D652AA925B10CF2F940181FD /* Pods_CEPSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,8 +38,8 @@
 		5EABBA4C1F799AF600F1EFB2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5EB7E44B1F924F9700A5130E /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		5EB7E44D1F9250A100A5130E /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
-		5EB7E44F1F92559500A5130E /* CEObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEObservable.swift; sourceTree = "<group>"; };
-		5EF8D57E1F704889005EF425 /* EventObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObservable.swift; sourceTree = "<group>"; };
+		5EB7E44F1F92559500A5130E /* ComplexEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexEvent.swift; sourceTree = "<group>"; };
+		5EF8D57E1F704889005EF425 /* EventStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStream.swift; sourceTree = "<group>"; };
 		D652AA925B10CF2F940181FD /* Pods_CEPSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CEPSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E593E398C9DC342427710722 /* Pods-CEPSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift/Pods-CEPSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,8 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				5E4F9EBA1F54DD8C00490249 /* EventManager.swift */,
-				5EF8D57E1F704889005EF425 /* EventObservable.swift */,
-				5EB7E44F1F92559500A5130E /* CEObservable.swift */,
+				5EF8D57E1F704889005EF425 /* EventStream.swift */,
+				5EB7E44F1F92559500A5130E /* ComplexEvent.swift */,
 				5EABBA4C1F799AF600F1EFB2 /* Event.swift */,
 				5EB7E44B1F924F9700A5130E /* Window.swift */,
 				5EB7E44D1F9250A100A5130E /* Operation.swift */,
@@ -250,10 +250,10 @@
 				5EB7E44E1F9250A100A5130E /* Operation.swift in Sources */,
 				5E4F9EAB1F54D8CE00490249 /* ViewController.swift in Sources */,
 				5E4029BC1F8D83DB00E21997 /* PedometerEvent.swift in Sources */,
-				5EB7E4501F92559500A5130E /* CEObservable.swift in Sources */,
+				5EB7E4501F92559500A5130E /* ComplexEvent.swift in Sources */,
 				5E4F9EA91F54D8CE00490249 /* AppDelegate.swift in Sources */,
 				5EABBA4D1F799AF600F1EFB2 /* Event.swift in Sources */,
-				5EF8D57F1F704889005EF425 /* EventObservable.swift in Sources */,
+				5EF8D57F1F704889005EF425 /* EventStream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

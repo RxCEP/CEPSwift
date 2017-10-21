@@ -16,7 +16,7 @@ class EventManager<T: Event> {
         self.events.onNext(event)
     }
     
-    public func asObservable() -> EventObservable<T> {
-        return EventObservable(withObservable: self.events)
+    public func asStream() -> EventStream<T> {
+        return EventStream(withObservable: self.events.asObservable())
     }
 }
