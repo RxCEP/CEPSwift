@@ -44,7 +44,9 @@ class EventStream<T> {
     }
     
     public func window(ofTime: Int, max: Int, repeats: Bool = true) -> EventStream<[T]> {
-        var observable = self.observable.buffer(timeSpan: RxTimeInterval(ofTime), count: max, scheduler: MainScheduler.instance)
+        var observable = self.observable.buffer(timeSpan: RxTimeInterval(ofTime),
+                                                count: max,
+                                                scheduler: MainScheduler.instance)
         
         if(!repeats) {
             observable = observable.take(1)
