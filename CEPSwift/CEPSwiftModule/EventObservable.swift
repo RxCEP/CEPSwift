@@ -53,10 +53,6 @@ class EventObservable<T> {
         return EventObservable<[T]>(withObservable: observable)
     }
     
-    internal func asRxObservable() -> Observable<T> {
-        return self.eventObservable.asObservable()
-    }
-    
     private func pairwise() -> EventObservable<(T,T)> {
         var previous:T? = nil
         let observable = self.eventObservable
