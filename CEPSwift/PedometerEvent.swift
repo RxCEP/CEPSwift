@@ -19,7 +19,7 @@ class PedometerEvent: Event, Comparable {
     }
     
     static func <(lhs: PedometerEvent, rhs: PedometerEvent) -> Bool {
-        return Int(lhs.data.numberOfSteps) < Int(rhs.data.numberOfSteps)
+        return lhs.data.numberOfSteps.intValue < rhs.data.numberOfSteps.intValue
     }
     
     static func ==(lhs: PedometerEvent, rhs: PedometerEvent) -> Bool {
