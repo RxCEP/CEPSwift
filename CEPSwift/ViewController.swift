@@ -57,7 +57,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // When our first and second rules happen, user is walking! Let's
         // set our backgroung to blue!
-        walkingRule1.merge(anotherObservable: walkingRule2).subscribe {
+        walkingRule1.merge(withStream: walkingRule2).subscribe {
             self.setBlueBackground()
         }
         
