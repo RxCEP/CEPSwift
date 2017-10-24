@@ -52,7 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let walkingRule2 = pedometerEvents
             .asStream()
             .followedBy { (fst, snd) -> Bool in
-                Int(fst.data.numberOfSteps) < Int(snd.data.numberOfSteps)
+                fst.data.numberOfSteps.intValue < snd.data.numberOfSteps.intValue
         }
         
         // When our first and second rules happen, user is walking! Let's
