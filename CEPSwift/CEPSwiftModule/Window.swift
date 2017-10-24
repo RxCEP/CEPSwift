@@ -6,7 +6,7 @@
 //  Copyright © 2017 CEPSwift. All rights reserved.
 //
 
-enum Window {
+public enum Window {
     case batch
     case sliding
 }

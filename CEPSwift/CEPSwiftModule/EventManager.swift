@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class EventManager<T: Event> {
+public class EventManager<T: Event> {
     private let events = PublishSubject<T>()
     
     public func addEvent(event: T) {

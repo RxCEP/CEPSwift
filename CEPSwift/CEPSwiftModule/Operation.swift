@@ -6,7 +6,7 @@
 //  Copyright © 2017 CEPSwift. All rights reserved.
 //
 
-enum Operation {
+public enum Operation {
     case all
     case any
 }

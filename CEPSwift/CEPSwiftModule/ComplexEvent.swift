@@ -9,14 +9,14 @@
 import Foundation
 import RxSwift
 
-class ComplexEvent {
+public class ComplexEvent {
     private var observable: Observable<(Any, Int)>
     private var numberOfEvents: Int
     private var operation: Operation
     private var maxTimeBetween: Int
     private var maxCountEvents: Int
     
-    init(source: Observable<(Any, Int)>, count: Int, operation: Operation = .any, maxTimeBetween: Int = 5, maxCountEvents: Int = 4) {
+    public init(source: Observable<(Any, Int)>, count: Int, operation: Operation = .any, maxTimeBetween: Int = 5, maxCountEvents: Int = 4) {
         self.observable = source
         self.numberOfEvents = count
         self.operation = operation
@@ -24,7 +24,7 @@ class ComplexEvent {
         self.maxCountEvents = maxCountEvents
     }
     
-    func subscribe(completion: @escaping (() -> Void)) {
+    public func subscribe(completion: @escaping (() -> Void)) {
         _ = self.observable.buffer(timeSpan: RxTimeInterval(maxTimeBetween), count: numberOfEvents, scheduler: MainScheduler.instance).subscribe { (buffer) in
             guard let events = buffer.element else { return }
             var values = Set<Int>()

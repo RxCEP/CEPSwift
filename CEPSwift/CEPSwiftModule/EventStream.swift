@@ -9,10 +9,10 @@
 import Foundation
 import RxSwift
 
-class EventStream<T> {
+public class EventStream<T> {
     fileprivate let observable: Observable<T>
     
-    init(withObservable: Observable<T>) {
+    public init(withObservable: Observable<T>) {
         self.observable = withObservable
     }
     
@@ -76,7 +76,7 @@ class EventStream<T> {
 }
 
 extension EventStream where T: Comparable {
-    func max(onNext: @escaping((_ max: T?) -> Void)) {
+    public func max(onNext: @escaping((_ max: T?) -> Void)) {
         _ = self.observable.scan([]) { lastSlice, newValue in
             return Array(lastSlice + [newValue])
             }.subscribe { (value) in
@@ -84,7 +84,7 @@ extension EventStream where T: Comparable {
         }
     }
     
-    func min(onNext: @escaping((_ min: T?) -> Void)) {
+    public func min(onNext: @escaping((_ min: T?) -> Void)) {
         _ = self.observable.scan([]) { lastSlice, newValue in
             return Array(lastSlice + [newValue])
             }.subscribe { (value) in

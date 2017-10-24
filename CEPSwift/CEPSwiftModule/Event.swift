@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Event {
+public protocol Event {
     var timestamp: Date { get set }
 }
