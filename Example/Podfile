@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CEPSwift_Example' do
+  pod 'CEPSwift', :path => '../'
+
+  target 'CEPSwift_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
