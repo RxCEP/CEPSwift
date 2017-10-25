@@ -22,7 +22,7 @@ pod 'CEPSwift'
 
 ## Author
 
-guedesbgeorge, guedesbgeorge42@gmail.com
+George Guedes, guedesbgeorge42@gmail.com
 
 ## License
 
