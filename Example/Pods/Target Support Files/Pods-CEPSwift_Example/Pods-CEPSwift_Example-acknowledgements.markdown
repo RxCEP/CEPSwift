@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## CEPSwift
 
-Copyright (c) 2017 guedesbgeorge <guedesbgeorge42@gmail.com>
+Copyright (c) 2017 George Guedes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
