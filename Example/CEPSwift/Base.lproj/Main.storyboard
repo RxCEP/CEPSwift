@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jnJ-yT-ARY">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="KLH-qy-0CU">
+            <objects>
+                <viewController id="jnJ-yT-ARY" customClass="ViewController" customModule="CEPSwift_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Ff-2S-3Lg"/>
+                        <viewControllerLayoutGuide type="bottom" id="IDm-th-2Jj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Aam-5O-plJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-sB-9Bv">
+                                <rect key="frame" x="27" y="420" width="267" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pGf-sB-9Bv" secondAttribute="height" multiplier="267:49" id="NuF-OC-X5m"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="267" id="oFq-ez-RbP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBH-Ah-CQY">
+                                <rect key="frame" x="27" y="477" width="267" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pGf-sB-9Bv" firstAttribute="centerY" secondItem="Aam-5O-plJ" secondAttribute="centerY" multiplier="1.565" id="3cz-2G-gar"/>
+                            <constraint firstItem="pBH-Ah-CQY" firstAttribute="width" secondItem="pGf-sB-9Bv" secondAttribute="width" id="MWn-4w-2Ba"/>
+                            <constraint firstItem="pBH-Ah-CQY" firstAttribute="height" secondItem="pGf-sB-9Bv" secondAttribute="height" id="NjU-EG-7Rm"/>
+                            <constraint firstItem="pGf-sB-9Bv" firstAttribute="centerX" secondItem="Aam-5O-plJ" secondAttribute="centerX" id="eAn-Nr-cyN"/>
+                            <constraint firstItem="pBH-Ah-CQY" firstAttribute="top" secondItem="pGf-sB-9Bv" secondAttribute="bottom" constant="8" id="jcb-bK-hrS"/>
+                            <constraint firstItem="pBH-Ah-CQY" firstAttribute="centerX" secondItem="pGf-sB-9Bv" secondAttribute="centerX" id="kac-hw-zuf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="speedLabel" destination="pBH-Ah-CQY" id="8WX-du-VsC"/>
+                        <outlet property="stepsLabel" destination="pGf-sB-9Bv" id="yx4-C1-ulS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kW1-6Q-t8Z" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733" y="517"/>
+        </scene>
+    </scenes>
+</document>
