@@ -43,6 +43,12 @@ pod 'CEPSwift'
 
 George Guedes, guedesbgeorge42@gmail.com
 
+## Acknowledgment
+
+CEPSwift was conceived as part of a thesis during undergraduation. We would like to thank the advisor and mentor of this project, professor [Kiev Gama](http://cin.ufpe.br/~kiev/).
+
+Also we would like to thank [RxSwift](https://github.com/ReactiveX/RxSwift) for the great framework that we use here!
+
 ## License
 
 CEPSwift is available under the MIT license. See the LICENSE file for more info.
