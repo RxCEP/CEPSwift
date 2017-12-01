@@ -4,8 +4,10 @@ target 'CEPSwift_Example' do
   pod 'CEPSwift', :path => '../'
 
   target 'CEPSwift_Tests' do
-    inherit! :search_paths
+    pod 'CEPSwift', :path => '../'
 
+    pod 'Quick', '~> 1.2.0'
+  pod 'Nimble', '~> 7.0.2'
     
   end
 end

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C5F985D19D7B99E4DA47EB6 /* Pods_CEPSwift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134380D6BD2BC52E7AEA3C35 /* Pods_CEPSwift_Tests.framework */; };
+		5E10ABE51FD0D04F0058C319 /* IntEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E10ABE41FD0D04F0058C319 /* IntEvent.swift */; };
+		5E10ABE81FD0EB680058C319 /* StringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E10ABE61FD0EB150058C319 /* StringEvent.swift */; };
 		5EA136A01FA10760006DD03C /* PedometerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA1369F1FA10760006DD03C /* PedometerEvent.swift */; };
 		5EA136A21FA10768006DD03C /* LocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA136A11FA10768006DD03C /* LocationEvent.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -17,6 +19,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9608751EB07AE07A1F2DAB69 /* Pods_CEPSwift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAE20554BC642199050B2E7 /* Pods_CEPSwift_Example.framework */; };
+		D9A94AD8A2B135D643914521 /* Pods_CEPSwift_Example_CEPSwift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F52F3C97FBA7E885D83588 /* Pods_CEPSwift_Example_CEPSwift_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		025B95247FF3449011782C8C /* Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		134380D6BD2BC52E7AEA3C35 /* Pods_CEPSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CEPSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39F52F3C97FBA7E885D83588 /* Pods_CEPSwift_Example_CEPSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CEPSwift_Example_CEPSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		421C75FFEEDAF7DF1BFF47DC /* Pods-CEPSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift_Tests/Pods-CEPSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		493B3B8A306D67E0277D9374 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4ADB24483E53A9DEF2B4EFC2 /* CEPSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CEPSwift.podspec; path = ../CEPSwift.podspec; sourceTree = "<group>"; };
 		5A798B583855F63C41B31083 /* Pods-CEPSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift_Example/Pods-CEPSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5C2936264D2ED43EB87C7ABF /* Pods-CEPSwift_Example-CEPSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift_Example-CEPSwift_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DFD9220E9CDC645327BA3CA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		5E10ABE41FD0D04F0058C319 /* IntEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntEvent.swift; sourceTree = "<group>"; };
+		5E10ABE61FD0EB150058C319 /* StringEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEvent.swift; sourceTree = "<group>"; };
 		5EA1369F1FA10760006DD03C /* PedometerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerEvent.swift; sourceTree = "<group>"; };
 		5EA136A11FA10768006DD03C /* LocationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEvent.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CEPSwift_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEPSwift_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C5F985D19D7B99E4DA47EB6 /* Pods_CEPSwift_Tests.framework in Frameworks */,
+				D9A94AD8A2B135D643914521 /* Pods_CEPSwift_Example_CEPSwift_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,7 @@
 			children = (
 				9FAE20554BC642199050B2E7 /* Pods_CEPSwift_Example.framework */,
 				134380D6BD2BC52E7AEA3C35 /* Pods_CEPSwift_Tests.framework */,
+				39F52F3C97FBA7E885D83588 /* Pods_CEPSwift_Example_CEPSwift_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -89,6 +99,8 @@
 				D59ED67AC9C2AE752CE2BC77 /* Pods-CEPSwift_Example.release.xcconfig */,
 				421C75FFEEDAF7DF1BFF47DC /* Pods-CEPSwift_Tests.debug.xcconfig */,
 				FE75C1EF1B60FE3F2A6A99A5 /* Pods-CEPSwift_Tests.release.xcconfig */,
+				5C2936264D2ED43EB87C7ABF /* Pods-CEPSwift_Example-CEPSwift_Tests.debug.xcconfig */,
+				025B95247FF3449011782C8C /* Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -143,6 +155,8 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				5E10ABE41FD0D04F0058C319 /* IntEvent.swift */,
+				5E10ABE61FD0EB150058C319 /* StringEvent.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -313,13 +327,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CEPSwift/CEPSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CEPSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Tests/Pods-CEPSwift_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5587E1A0EC71E5B475B720B6 /* [CP] Copy Pods Resources */ = {
@@ -334,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Tests/Pods-CEPSwift_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		758D0E18AC5C24DE764AF2DA /* [CP] Check Pods Manifest.lock */ = {
@@ -366,7 +389,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CEPSwift_Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CEPSwift_Example-CEPSwift_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -391,6 +414,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E10ABE81FD0EB680058C319 /* StringEvent.swift in Sources */,
+				5E10ABE51FD0D04F0058C319 /* IntEvent.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +583,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 421C75FFEEDAF7DF1BFF47DC /* Pods-CEPSwift_Tests.debug.xcconfig */;
+			baseConfigurationReference = 5C2936264D2ED43EB87C7ABF /* Pods-CEPSwift_Example-CEPSwift_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = G57YQYV443;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -580,7 +605,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE75C1EF1B60FE3F2A6A99A5 /* Pods-CEPSwift_Tests.release.xcconfig */;
+			baseConfigurationReference = 025B95247FF3449011782C8C /* Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = G57YQYV443;
 				FRAMEWORK_SEARCH_PATHS = (
