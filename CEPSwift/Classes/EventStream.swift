@@ -12,7 +12,7 @@ import RxSwift
 public class EventStream<T> {
     fileprivate let observable: Observable<T>
     
-    public init(withObservable: Observable<T>) {
+    internal init(withObservable: Observable<T>) {
         self.observable = withObservable
     }
     

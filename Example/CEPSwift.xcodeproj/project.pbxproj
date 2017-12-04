@@ -154,9 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
 				5E10ABE41FD0D04F0058C319 /* IntEvent.swift */,
 				5E10ABE61FD0EB150058C319 /* StringEvent.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

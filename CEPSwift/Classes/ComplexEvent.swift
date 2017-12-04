@@ -16,7 +16,7 @@ public class ComplexEvent {
     private var maxTimeBetween: Int
     private var maxCountEvents: Int
     
-    public init(source: Observable<(Any, Int)>, count: Int, operation: Operation = .any, maxTimeBetween: Int = 5, maxCountEvents: Int = 4) {
+    internal init(source: Observable<(Any, Int)>, count: Int, operation: Operation = .any, maxTimeBetween: Int = 5, maxCountEvents: Int = 4) {
         self.observable = source
         self.numberOfEvents = count
         self.operation = operation

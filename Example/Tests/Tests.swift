@@ -12,7 +12,7 @@ class TableOfContentsSpec: QuickSpec {
                 let manager = EventManager<IntEvent>()
                 let numberOfEvents = 5
                 var counter = 0
-                manager.asStream().filter(predicate: {$0.value%2 == 0}).subscribe(onNext: { (event) in
+                manager.stream.filter(predicate: {$0.value%2 == 0}).subscribe(onNext: { (event) in
                     counter += 1
                 })
                 
@@ -29,7 +29,7 @@ class TableOfContentsSpec: QuickSpec {
                 let manager = EventManager<IntEvent>()
                 let numberOfEvents = 5
                 var maxValue = 0
-                manager.asStream().max(onNext: { (event) in
+                manager.stream.max(onNext: { (event) in
                     maxValue = event!.value
                 })
                 
@@ -44,7 +44,7 @@ class TableOfContentsSpec: QuickSpec {
                 let manager = EventManager<IntEvent>()
                 let numberOfEvents = 5
                 var maxValue = 0
-                manager.asStream().min(onNext: { (event) in
+                manager.stream.min(onNext: { (event) in
                     maxValue = event!.value
                 })
                 
@@ -60,7 +60,7 @@ class TableOfContentsSpec: QuickSpec {
                 let events = [0, 1, 2, 3, 4, 5]
                 var eventsValues = [Int]()
                 
-                manager.asStream().window(ofTime: 50, max: events.count).subscribe(onNext: { (events) in
+                manager.stream.window(ofTime: 50, max: events.count).subscribe(onNext: { (events) in
                     eventsValues = events.map({$0.value})
                 })
                 
@@ -75,7 +75,7 @@ class TableOfContentsSpec: QuickSpec {
                 let numberOfEvents = 5
                 var counter = 0
                 
-                manager.asStream().followedBy(predicate: { (fst, snd) -> Bool in
+                manager.stream.followedBy(predicate: { (fst, snd) -> Bool in
                     fst.value < snd.value
                 }).subscribe(onNext: { (event) in
                     counter += 1
@@ -93,7 +93,7 @@ class TableOfContentsSpec: QuickSpec {
                 let originalEvents = [0, 1, 2, 3, 4, 5]
                 var events = [Int]()
                 
-                manager.asStream().map(transform: {$0.value * 10}).subscribe(onNext: { (value) in
+                manager.stream.map(transform: {$0.value * 10}).subscribe(onNext: { (value) in
                     events.append(value)
                 })
                 
@@ -109,7 +109,7 @@ class TableOfContentsSpec: QuickSpec {
                 let stringManager = EventManager<StringEvent>()
                 var counter = 0
                 
-                intManager.asStream().merge(withStream: stringManager.asStream()).subscribe {
+                intManager.stream.merge(withStream: stringManager.stream).subscribe {
                     counter += 1
                 }
                 
