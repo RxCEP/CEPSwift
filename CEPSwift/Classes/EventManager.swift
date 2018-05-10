@@ -11,17 +11,14 @@ import RxSwift
 
 public class EventManager<T: Event> {
     private let events = PublishSubject<T>()
+    public private(set) var stream: EventStream<T>
     
     public init() {
-        
+        self.stream = EventStream(withObservable: self.events.asObservable())
     }
     
     public func addEvent(event: T) {
         self.events.onNext(event)
-    }
-    
-    public func asStream() -> EventStream<T> {
-        return EventStream(withObservable: self.events.asObservable())
     }
 }
 

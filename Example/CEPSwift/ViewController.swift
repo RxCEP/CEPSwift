@@ -27,7 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let pedometerManager = CMPedometer()
     let locationManager = CLLocationManager()
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {        
         // Nothing special here, just configuring some attributes on the locationManager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -46,12 +46,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func setRules() {
         // This rule assure that the person is walking in a regular walk speed
         let walkingRule1 = locationEvents
-            .asStream()
+            .stream
             .filter(predicate: {$0.data.speed > 0.2 && $0.data.speed < 1.8})
         
         // This rule assure that the number of steps is increasing
         let walkingRule2 = pedometerEvents
-            .asStream()
+            .stream
             .followedBy { (fst, snd) -> Bool in
                 fst.data.numberOfSteps.intValue < snd.data.numberOfSteps.intValue
         }
@@ -66,7 +66,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // the speed is to high, the user is probably in car, bicycle, train or
         // maybe a horse. Never know
         let stopWalkingRule = locationEvents
-            .asStream()
+            .stream
             .filter(predicate: {$0.data.speed < 0.2 || $0.data.speed > 1.8})
         
         /// When our stopWalkingRule occurs, the user isn't walking! Let's set
