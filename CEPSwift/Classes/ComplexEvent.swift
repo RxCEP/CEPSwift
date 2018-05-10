@@ -24,13 +24,25 @@ public class ComplexEvent {
         self.maxCountEvents = maxCountEvents
     }
     
+    public func merge<R>(with stream: EventStream<R>) -> ComplexEvent {
+        let newNumberOfEvents = self.numberOfEvents + 1
+        let streamObservable = stream.observable.map { elem in (elem as Any, newNumberOfEvents) }
+        
+        let newObservable = Observable.merge([self.observable, streamObservable])
+        self.numberOfEvents = newNumberOfEvents
+        
+        return ComplexEvent(source: newObservable, count: newNumberOfEvents)
+    }
+    
     public func subscribe(completion: @escaping (() -> Void)) {
         _ = self.observable.buffer(timeSpan: RxTimeInterval(maxTimeBetween), count: numberOfEvents, scheduler: MainScheduler.instance).subscribe { (buffer) in
             guard let events = buffer.element else { return }
             var values = Set<Int>()
+            
             for item in events {
                 values.insert(item.1)
             }
+            
             if values.count == self.numberOfEvents {
                 completion()
             }
