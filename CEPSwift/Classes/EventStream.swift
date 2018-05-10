@@ -43,6 +43,19 @@ public class EventStream<T> {
         return ComplexEvent(source: merged, count: 2)
     }
     
+    public func merge<R>(with streams: [EventStream<R>]) -> ComplexEvent {
+        var observables = streams.enumerated().map { (index, stream) in
+            return stream.observable.map { elem in
+                (elem as Any, index)
+            }
+        }
+        observables.append(self.observable.map( {elem in
+            (elem as Any, streams.count)}))
+        
+        let merged = Observable.merge(observables)
+        return ComplexEvent(source: merged, count: observables.count)
+    }
+    
     public func window(ofTime: Int, max: Int, repeats: Bool = true) -> EventStream<[T]> {
         var observable = self.observable.buffer(timeSpan: RxTimeInterval(ofTime),
                                                 count: max,
