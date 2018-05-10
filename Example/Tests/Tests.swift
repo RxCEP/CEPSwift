@@ -109,7 +109,7 @@ class TableOfContentsSpec: QuickSpec {
                 let stringManager = EventManager<StringEvent>()
                 var counter = 0
                 
-                intManager.stream.merge(withStream: stringManager.stream).subscribe {
+                intManager.stream.merge(with: stringManager.stream).subscribe {
                     counter += 1
                 }
                 
