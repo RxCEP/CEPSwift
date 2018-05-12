@@ -131,6 +131,19 @@ extension EventStream where T: Comparable {
         return EventStream<T>(withObservable: newObservable).dropDuplicates()
     }
     
+    public func not(in stream: EventStream<T>) -> EventStream<T> {
+        let streamAcc = EventStream<[T]>(withObservable: stream.accumulated().observable.startWith([]))
+        
+        let newObservable = self.observable.withLatestFrom(streamAcc.observable) { (event, acc) -> (T, [T]) in
+            return (event,acc)
+        }.filter { (event, acc) -> Bool in
+            return acc.filter { $0 == event }.count == 0
+        }
+        .map { $0.0 }
+        
+        return EventStream<T>(withObservable: newObservable)
+    }
+    
     public func intersect(with stream: EventStream<T>) -> EventStream<T> {
         let selfAcc = self.accumulated()
         let streamAcc = stream.accumulated()
