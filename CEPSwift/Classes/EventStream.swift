@@ -112,6 +112,19 @@ extension EventStream where T: Comparable {
         }
     }
     
+    public func dropDuplicates() -> EventStream<T> {
+        let newObservable = self.observable
+        .withLatestFrom(self.accumulated().observable) { (event, acc) -> (T,[T]) in
+            return (event, acc)
+        }
+        .filter { (event, acc) -> Bool in
+            return acc.filter { $0 == event }.count == 1
+        }
+        .map { $0.0 }
+        
+        return EventStream<T>(withObservable: newObservable)
+    }
+    
     public func intersect(with stream: EventStream<T>) -> EventStream<T> {
         let selfAcc = self.accumulated()
         let streamAcc = stream.accumulated()
@@ -122,8 +135,7 @@ extension EventStream where T: Comparable {
         
         let newObservable = Observable.merge([selfInStream, streamInSelf])
                                       .map { $0! }
-                                      .distinctUntilChanged()
-        return EventStream<T>(withObservable: newObservable)
+        return EventStream<T>(withObservable: newObservable).dropDuplicates()
     }
     
     private func isElem(_ elem: T, in array: [T]) throws -> T? {
