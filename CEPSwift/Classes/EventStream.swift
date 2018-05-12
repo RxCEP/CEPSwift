@@ -79,6 +79,14 @@ public class EventStream<T> {
         
         return EventStream<(T,T)>(withObservable: observable)
     }
+    
+    private func accumulated() -> EventStream<[T]> {
+        let newObservable = self.observable.scan([]) { acc, val in
+            return Array(acc + [val])
+        }
+        
+        return EventStream<[T]>(withObservable: newObservable)
+    }
 }
 
 extension EventStream where T: Comparable {
@@ -96,6 +104,24 @@ extension EventStream where T: Comparable {
             }.subscribe { (value) in
                 onNext(value.element?.min())
         }
+    }
+    
+    public func intersect(with stream: EventStream<T>) -> EventStream<T> {
+        let selfAcc = self.accumulated()
+        let streamAcc = stream.accumulated()
+        
+        let selfInStream = self.observable.withLatestFrom(streamAcc.observable, resultSelector: self.isElem).filter { $0 != nil }
+        
+        let streamInSelf = stream.observable.withLatestFrom(selfAcc.observable, resultSelector: self.isElem).filter { $0 != nil }
+        
+        let newObservable = Observable.merge([selfInStream, streamInSelf])
+                                      .map { $0! }
+                                      .distinctUntilChanged()
+        return EventStream<T>(withObservable: newObservable)
+    }
+    
+    private func isElem(_ elem: T, in array: [T]) throws -> T? {
+        return array.contains(elem) ? elem : nil
     }
 }
 
