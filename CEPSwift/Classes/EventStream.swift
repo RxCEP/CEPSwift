@@ -80,7 +80,7 @@ public class EventStream<T> {
         return EventStream<(T,T)>(withObservable: observable)
     }
     
-    private func accumulated() -> EventStream<[T]> {
+    public func accumulated() -> EventStream<[T]> {
         let newObservable = self.observable.scan([]) { acc, val in
             return Array(acc + [val])
         }
@@ -103,6 +103,12 @@ extension EventStream where T: Comparable {
             return Array(lastSlice + [newValue])
             }.subscribe { (value) in
                 onNext(value.element?.min())
+        }
+    }
+    
+    public func ordered(by comparison: @escaping (T,T) -> Bool) -> EventStream<[T]> {
+        return self.accumulated().map { events -> [T] in
+            return events.sorted(by: comparison)
         }
     }
     
