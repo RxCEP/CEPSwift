@@ -125,6 +125,12 @@ extension EventStream where T: Comparable {
         return EventStream<T>(withObservable: newObservable)
     }
     
+    public func union(with stream: EventStream<T>) -> EventStream<T> {
+        let newObservable = Observable.merge([self.observable, stream.observable])
+        
+        return EventStream<T>(withObservable: newObservable).dropDuplicates()
+    }
+    
     public func intersect(with stream: EventStream<T>) -> EventStream<T> {
         let selfAcc = self.accumulated()
         let streamAcc = stream.accumulated()
