@@ -1,6 +1,6 @@
 # CEPSwift
 
-[![CI Status](http://img.shields.io/travis/guedesbgeorge/CEPSwift.svg?style=flat)](https://travis-ci.com/RxCEP/CEPSwift)
+[![Build Status](https://travis-ci.com/RxCEP/CEPSwift.svg?branch=master)](https://travis-ci.com/RxCEP/CEPSwift)
 [![Version](https://img.shields.io/cocoapods/v/CEPSwift.svg?style=flat)](http://cocoapods.org/pods/CEPSwift)
 [![License](https://img.shields.io/cocoapods/l/CEPSwift.svg?style=flat)](http://cocoapods.org/pods/CEPSwift)
 [![Platform](https://img.shields.io/cocoapods/p/CEPSwift.svg?style=flat)](http://cocoapods.org/pods/CEPSwift)
