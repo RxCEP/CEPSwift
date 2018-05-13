@@ -80,6 +80,9 @@ public class EventStream<T> {
         return EventStream<(T,T)>(withObservable: observable)
     }
     
+    /**
+     Creates a **EventStream** that emit a list of events occured until the moment
+    */
     public func accumulated() -> EventStream<[T]> {
         let newObservable = self.observable.scan([]) { acc, val in
             return Array(acc + [val])
@@ -106,12 +109,20 @@ extension EventStream where T: Comparable {
         }
     }
     
+    /**
+     Creates a new **EventStream** of previously occurred events **ordered by** a comparison function.
+     
+     - parameter by: Comparison function.
+     */
     public func ordered(by comparison: @escaping (T,T) -> Bool) -> EventStream<[T]> {
         return self.accumulated().map { events -> [T] in
             return events.sorted(by: comparison)
         }
     }
     
+    /**
+     Creates a new **EventStream** that emits only unique events.
+    */
     public func dropDuplicates() -> EventStream<T> {
         let newObservable = self.observable
         .withLatestFrom(self.accumulated().observable) { (event, acc) -> (T,[T]) in
@@ -125,12 +136,22 @@ extension EventStream where T: Comparable {
         return EventStream<T>(withObservable: newObservable)
     }
     
+    /**
+     Creates a new **EventStream** that emits the **unique events** of both parent streams.
+     
+     - parameter stream: The **EventStream** which will be performed the union with.
+    */
     public func union(with stream: EventStream<T>) -> EventStream<T> {
         let newObservable = Observable.merge([self.observable, stream.observable])
         
         return EventStream<T>(withObservable: newObservable).dropDuplicates()
     }
     
+    /**
+     Creates a **EventStream** that emits events that are not present on the received stream.
+     
+     - parameter stream: The **EventStream** which emit events that are ignored by the new **EventStream**
+    */
     public func not(in stream: EventStream<T>) -> EventStream<T> {
         let streamAcc = EventStream<[T]>(withObservable: stream.accumulated().observable.startWith([]))
         
@@ -144,6 +165,11 @@ extension EventStream where T: Comparable {
         return EventStream<T>(withObservable: newObservable)
     }
     
+    /**
+     Creates a **EventStream** that emits events present in both **parent EventStreams**
+     
+     - parameter stream: One of the parent **EventStreams**
+    */
     public func intersect(with stream: EventStream<T>) -> EventStream<T> {
         let selfAcc = self.accumulated()
         let streamAcc = stream.accumulated()
