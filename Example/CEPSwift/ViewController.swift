@@ -58,9 +58,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // When our first and second rules happen, user is walking! Let's
         // set our backgroung to blue!
-        walkingRule1.merge(withStream: walkingRule2).subscribe {
-            self.setBlueBackground()
-        }
+        
+        walkingRule1
+            .merge(with: walkingRule2)
+            .merge(with: walkingRule1)
+            .subscribe {
+                self.setBlueBackground()
+            }
         
         // When the speed is to low the user probably stop walking and when
         // the speed is to high, the user is probably in car, bicycle, train or

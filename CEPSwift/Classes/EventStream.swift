@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 public class EventStream<T> {
-    fileprivate let observable: Observable<T>
+    internal let observable: Observable<T>
     
     internal init(withObservable: Observable<T>) {
         self.observable = withObservable
@@ -33,27 +33,20 @@ public class EventStream<T> {
         return EventStream<R>(withObservable: observable)
     }
     
-    public func merge<R>(withStream: EventStream<R>) -> ComplexEvent {
+    public func merge<R>(with stream: EventStream<R>) -> ComplexEvent {
         let merged = Observable.merge(self.observable.map({ (element) -> (Any, Int) in
             (element as Any, 1)
-        }), withStream.observable.map({ (element) -> (Any, Int) in
+        }), stream.observable.map({ (element) -> (Any, Int) in
             (element as Any, 2)
         }))
         
         return ComplexEvent(source: merged, count: 2)
     }
     
-    public func merge<R>(with streams: [EventStream<R>]) -> ComplexEvent {
-        var observables = streams.enumerated().map { (index, stream) in
-            return stream.observable.map { elem in
-                (elem as Any, index)
-            }
-        }
-        observables.append(self.observable.map( {elem in
-            (elem as Any, streams.count)}))
+    public func asComplexEvent() -> ComplexEvent {
+        let obs = self.observable.map { element in (element as Any, 1) }
         
-        let merged = Observable.merge(observables)
-        return ComplexEvent(source: merged, count: observables.count)
+        return ComplexEvent(source: obs, count: 1)
     }
     
     public func window(ofTime: Int, max: Int, repeats: Bool = true) -> EventStream<[T]> {
