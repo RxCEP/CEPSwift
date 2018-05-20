@@ -5,6 +5,7 @@ target 'CEPSwift_Example' do
 
   target 'CEPSwift_Tests' do
     pod 'CEPSwift', :path => '../'
+    pod 'RxTest'
 
     pod 'Quick', '~> 1.2.0'
   pod 'Nimble', '~> 7.0.2'

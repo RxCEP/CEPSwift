@@ -11,4 +11,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.source_files = 'CEPSwift/Classes/**/*'
   s.dependency 'RxSwift'
+  s.dependency 'RxTest'
 end

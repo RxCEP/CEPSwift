@@ -2,27 +2,82 @@
 
 import Quick
 import Nimble
-import CEPSwift
-
+@testable import CEPSwift
+import RxTest
+@testable import RxSwift
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
         describe("Operators tests") {
-            
             it("Filters") {
-                let manager = EventManager<IntEvent>()
-                let numberOfEvents = 5
-                var counter = 0
-                manager.stream.filter(predicate: {$0.value%2 == 0}).subscribe(onNext: { (event) in
-                    counter += 1
+                
+                let testData = [
+                    (time: 201, event: IntEvent(value: 210)),
+                    (time: 215, event: IntEvent(value: 251)),
+                    (time: 218, event: IntEvent(value: 10)),
+                    (time: 220, event: IntEvent(value: 5)),
+                    (time: 230, event: IntEvent(value: 15)),
+                    (time: 500, event: IntEvent(value: 10)),
+                    (time: 600, event: IntEvent(value: 500))
+                ]
+            
+                let expectedData = [
+                    (time: 201, event: IntEvent(value: 210)),
+                    (time: 218, event: IntEvent(value: 10)),
+                    (time: 500, event: IntEvent(value: 10)),
+                    (time: 600, event: IntEvent(value: 500))
+                ]
+                
+                let simulator = EventStreamSimulator<IntEvent>()
+                let results = simulator.simulate(with: testData, handler: { (stream) -> EventStream<IntEvent> in
+                    return stream.filter(predicate: { (event) -> Bool in
+                        return event.value % 2 == 0
+                    })
                 })
                 
-                for i in 0..<numberOfEvents {
-                    manager.addEvent(event: IntEvent(value: i*2))
+                for (index, result) in results.enumerated() {
+                    expect(result.time).to(equal(expectedData[index].time))
+                    expect(result.event).to(equal(expectedData[index].event))
                 }
+            }
+            
+            it("Intersects") {
+                let testData1 = [
+                    (time: 201, event: IntEvent(value: 1)),
+                    (time: 202, event: IntEvent(value: 2)),
+                    (time: 203, event: IntEvent(value: 4)),
+                    (time: 204, event: IntEvent(value: 8)),
+                    (time: 205, event: IntEvent(value: 16)),
+                    (time: 206, event: IntEvent(value: 32)),
+                    (time: 207, event: IntEvent(value: 64))
+                ]
                 
-                manager.addEvent(event: IntEvent(value: 1))
-                manager.addEvent(event: IntEvent(value: 7))
-                expect(counter).toEventually(equal(numberOfEvents))
+                let testData2 = [
+                    (time: 299, event: IntEvent(value: 0)),
+                    (time: 300, event: IntEvent(value: 32)),
+                    (time: 300, event: IntEvent(value: 99)),
+                    (time: 301, event: IntEvent(value: 8)),
+                    (time: 302, event: IntEvent(value: 1)),
+                    (time: 302, event: IntEvent(value: 100)),
+                ]
+                
+                let expectedData = [
+                    (time: 300, event: IntEvent(value: 32)),
+                    (time: 301, event: IntEvent(value: 8)),
+                    (time: 302, event: IntEvent(value: 1)),
+                ]
+                
+                let simulator = EventStreamSimulator<IntEvent>()
+                let results = simulator.simulate(with: testData1,
+                                                with: testData2,
+                                                handler: { (stream1, stream2) -> EventStream<IntEvent> in
+                                                    return stream1.intersect(with: stream2)
+                                                    
+                })
+                
+                for (index, result) in results.enumerated() {
+                    expect(result.time).to(equal(expectedData[index].time))
+                    expect(result.event).to(equal(expectedData[index].event))
+                }
             }
             
             it("Calculates max") {
