@@ -1,0 +1,6 @@
+framework module CEPSwift {
+  umbrella header "CEPSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

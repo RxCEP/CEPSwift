@@ -23,7 +23,7 @@ public class EventStream<T> {
     public func filter(predicate: @escaping (T) -> Bool) -> EventStream<T> {
         return EventStream(withObservable: self.observable.filter(predicate))
     }
-    
+
     public func followedBy(predicate: @escaping(T, T) -> Bool) -> EventStream<(T,T)> {
         return self.pairwise().filter(predicate: predicate)
     }
@@ -45,7 +45,7 @@ public class EventStream<T> {
     
     public func asComplexEvent() -> ComplexEvent {
         let obs = self.observable.map { element in (element as Any, 1) }
-        
+
         return ComplexEvent(source: obs, count: 1)
     }
     
@@ -59,6 +59,10 @@ public class EventStream<T> {
         }
         
         return EventStream<[T]>(withObservable: observable)
+    }
+    
+    public func toArray() -> Observable<[T]> {
+        return self.observable.toArray()
     }
     
     private func pairwise() -> EventStream<(T,T)> {
@@ -75,10 +79,11 @@ public class EventStream<T> {
             .map { (element:T) -> (T,T) in
                 defer { previous = element }
                 return (previous!, element)
-        }
+            }
         
         return EventStream<(T,T)>(withObservable: observable)
     }
+    
 }
 
 extension EventStream where T: Comparable {
@@ -115,11 +120,11 @@ extension EventStream where T: NumericEvent {
                 return lastSlice + 1
             }
     }
-
+    
     public func average(timeWindow: Double, currentDate: Date) -> Observable<Int> {
         let doubled = Observable
             .combineLatest(self
-            .filter(predicate:
+                .filter(predicate:
                     {currentDate.timeIntervalSince($0.timestamp) < timeWindow})
                 .sum(),
                 self.filter(predicate:
@@ -128,7 +133,7 @@ extension EventStream where T: NumericEvent {
             {return $0/$1}
         return doubled.skip(1)
     }
-
+    
     public func probability(val: Int) -> Observable<Double> {
         let matchesCount = self.observable
         .map({$0.numericValue})
@@ -146,15 +151,15 @@ extension EventStream where T: NumericEvent {
         
         return doubled.skip(1)
     }
-
-        public func expected(val: Int) -> Observable<Double> {
-        let probability = self.probability(val: val, trials: trials)
+    
+    public func expected(val: Int) -> Observable<Double> {
+        let probability = self.probability(val: val)
         let doubled = Observable
             .combineLatest(probability, self.count()) { return $0*Double($1)}
         return doubled.skip(1)
     }
-
-        //variance = prob(x)*trials*1-prob(x)
+    
+    //variance = prob(x)*trials*1-prob(x)
     public func variance(dataSize: Int) -> Observable<Double> {
         // Dataset mean
         let a = self.sum().map {$0/dataSize}
