@@ -153,4 +153,20 @@ extension EventStream where T: NumericEvent {
             .combineLatest(probability, self.count()) { return $0*Double($1)}
         return doubled.skip(1)
     }
+
+        //variance = prob(x)*trials*1-prob(x)
+    public func variance(dataSize: Int) -> Observable<Double> {
+        // Dataset mean
+        let a = self.sum().map {$0/dataSize}
+        // Square diferences
+        let b = Observable.combineLatest( a, self.observable
+            .map({$0.numericValue})) {return ($0 - $1)*($0 - $1)}
+        // Averaged squared diferences
+        let sumAll = b.scan(0) {(a,b) in return a + b}
+        let countAll = b.scan(0) {(a,_) in return a + 1}
+        let doubled = Observable.combineLatest(
+            sumAll.map({Double($0)}),
+            countAll.map({Double($0)})) {($0/$1)}
+        return doubled.skip(3)
+    }
 }
