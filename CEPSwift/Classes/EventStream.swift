@@ -115,4 +115,17 @@ extension EventStream where T: NumericEvent {
                 return lastSlice + 1
             }
     }
+
+    public func average(timeWindow: Double, currentDate: Date) -> Observable<Int> {
+        let doubled = Observable
+            .combineLatest(self
+                .filter(predicate:
+                    {currentDate.timeIntervalSince($0.timestamp) < timeWindow})
+                .sum(),
+                self.filter(predicate:
+                    {currentDate.timeIntervalSince($0.timestamp) < timeWindow})
+                    .count())
+            {return $0/$1}
+        return doubled.skip(1)
+    }
 }
