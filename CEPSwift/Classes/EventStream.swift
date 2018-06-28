@@ -146,4 +146,11 @@ extension EventStream where T: NumericEvent {
         
         return doubled.skip(1)
     }
+
+        public func expected(val: Int) -> Observable<Double> {
+        let probability = self.probability(val: val, trials: trials)
+        let doubled = Observable
+            .combineLatest(probability, self.count()) { return $0*Double($1)}
+        return doubled.skip(1)
+    }
 }
