@@ -99,3 +99,20 @@ extension EventStream where T: Comparable {
     }
 }
 
+extension EventStream where T: NumericEvent {
+    public func sum() -> Observable<Int> {
+        return self.observable
+            .map({$0.numericValue})
+            .scan(0) { (lastSlice, newValue) in
+                return lastSlice + newValue
+            }
+    }
+    
+    public func count() -> Observable<Int> {
+        return self.observable
+            .map({$0.numericValue})
+            .scan(0) { (lastSlice, _) in
+                return lastSlice + 1
+            }
+    }
+}
