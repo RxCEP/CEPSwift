@@ -119,13 +119,31 @@ extension EventStream where T: NumericEvent {
     public func average(timeWindow: Double, currentDate: Date) -> Observable<Int> {
         let doubled = Observable
             .combineLatest(self
-                .filter(predicate:
+            .filter(predicate:
                     {currentDate.timeIntervalSince($0.timestamp) < timeWindow})
                 .sum(),
                 self.filter(predicate:
                     {currentDate.timeIntervalSince($0.timestamp) < timeWindow})
                     .count())
             {return $0/$1}
+        return doubled.skip(1)
+    }
+
+    public func probability(val: Int) -> Observable<Double> {
+        let matchesCount = self.observable
+        .map({$0.numericValue})
+        .filter({$0 == val})
+            .scan(0) { (lastSlice, _) in
+                return lastSlice + 1
+        }
+        
+        let doubled = Observable
+            .combineLatest(
+                matchesCount
+                    .map({Double($0)}),
+                self.count().map({Double($0)})) {
+                    return Double($0/$1)}
+        
         return doubled.skip(1)
     }
 }
