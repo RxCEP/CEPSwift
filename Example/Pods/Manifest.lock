@@ -2,20 +2,19 @@ PODS:
   - CEPSwift (0.1.0):
     - RxSwift
     - RxTest
-  - Nimble (7.0.2)
-  - Quick (1.2.0)
-  - RxSwift (4.0.0)
-  - RxTest (4.1.2):
+  - Nimble (7.3.1)
+  - Quick (1.3.2)
+  - RxSwift (4.3.1)
+  - RxTest (4.3.1):
     - RxSwift (~> 4.0)
 
 DEPENDENCIES:
   - CEPSwift (from `../`)
-  - Nimble (~> 7.0.2)
-  - Quick (~> 1.2.0)
-  - RxTest
+  - Nimble
+  - Quick
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Nimble
     - Quick
     - RxSwift
@@ -27,11 +26,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CEPSwift: 200c1881460c75048902f399d5c3740035a96188
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
-  RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
+  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  RxTest: ea97a208826906f3904c0debdd09575ebcbfe216
 
-PODFILE CHECKSUM: 7ae69c9f94a994341fdd8762c9a0f0b78bd258fd
+PODFILE CHECKSUM: c21740ef0e7db30357e29cd4ab109c857dfa5ab2
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
