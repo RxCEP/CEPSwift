@@ -184,7 +184,7 @@
 		8F431BF7178344CEF4488893CA73C6D2 /* Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513CB09648C29E79B9B4B65C34EA91FC /* Rx.swift */; };
 		9096D686AB39D3475A4227F0765C3DC4 /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF64FAD5B98632CAC5A924A4595A9A52 /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90AF114EE90D72937761E7B456E5F609 /* URL+FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B10AB265DCB724C3FB6876366314B3B /* URL+FileName.swift */; };
-		90F4BB9D216128B80078ECA7 /* EventStream+ProbabilityOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4BB9B216128980078ECA7 /* EventStream+ProbabilityOperators.swift */; };
+		90F4BB9F21612B180078ECA7 /* EventStream+ProbabilityOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4BB9E21612B180078ECA7 /* EventStream+ProbabilityOperators.swift */; };
 		9256256BCDF6632BEFDB61B38936F454 /* Enumerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDF97D3E5701F3BF66B660A5AC74F7B /* Enumerated.swift */; };
 		92CE929D537F7639E9AE5CEB93D73424 /* InfiniteSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5137E8D14B99F304A094358375E6FBDC /* InfiniteSequence.swift */; };
 		931E8E2480D938B5F8A48623F56F8465 /* InfiniteSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543378E6B98A0FA1F55D4AA31D917C98 /* InfiniteSequence.swift */; };
@@ -590,7 +590,7 @@
 		8E8DE847963FDE056A1ABBB51D537B44 /* CEPSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = CEPSwift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8EDF93F4B6BE12CD9A8974F9389768B7 /* Deprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecated.swift; path = RxSwift/Deprecated.swift; sourceTree = "<group>"; };
 		8FC3FE506448D5DAE63E06D16962F6AC /* CEPSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CEPSwift-prefix.pch"; sourceTree = "<group>"; };
-		90F4BB9B216128980078ECA7 /* EventStream+ProbabilityOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventStream+ProbabilityOperators.swift"; sourceTree = "<group>"; };
+		90F4BB9E21612B180078ECA7 /* EventStream+ProbabilityOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EventStream+ProbabilityOperators.swift"; path = "CEPSwift/Classes/EventStream+ProbabilityOperators.swift"; sourceTree = "<group>"; };
 		91EBEC840EFA9E8ACA17E1E90FA501F6 /* Bag+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bag+Rx.swift"; path = "RxSwift/Extensions/Bag+Rx.swift"; sourceTree = "<group>"; };
 		938A00D757BC47B012B0115276983320 /* DefaultIfEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultIfEmpty.swift; path = RxSwift/Observables/DefaultIfEmpty.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1205,7 +1205,7 @@
 		B4486891CBCB7CB73F4C82AAF5702063 /* CEPSwift */ = {
 			isa = PBXGroup;
 			children = (
-				90F4BB9B216128980078ECA7 /* EventStream+ProbabilityOperators.swift */,
+				90F4BB9E21612B180078ECA7 /* EventStream+ProbabilityOperators.swift */,
 				3E9005E8292F70A8A9B7F65E529600AB /* ComplexEvent.swift */,
 				B44A4F157C5A8C8B8BB5A1EB669D6E0A /* Event.swift */,
 				64FAA3E3D0091F8BBC0023EA9AF4C7D8 /* EventManager.swift */,
@@ -1928,7 +1928,7 @@
 				A40C241420C4FF7C622ACDB367750D6F /* Event.swift in Sources */,
 				2B15451AC7DEFE0ACDBC5059BF7F330E /* EventManager.swift in Sources */,
 				D6078835CEDDD16497FE795395C22AE6 /* EventStream.swift in Sources */,
-				90F4BB9D216128B80078ECA7 /* EventStream+ProbabilityOperators.swift in Sources */,
+				90F4BB9F21612B180078ECA7 /* EventStream+ProbabilityOperators.swift in Sources */,
 				C8801DFA68B09419882F605E71488015 /* EventStreamSimulator.swift in Sources */,
 				3AACD2F5D7D85FC89DC60C1033EDDF5B /* NumericEvent.swift in Sources */,
 				FE7E22D42B2FA67680294B34D3730906 /* Operation.swift in Sources */,
