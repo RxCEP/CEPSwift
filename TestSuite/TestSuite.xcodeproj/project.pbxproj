@@ -15,7 +15,7 @@
 		90BC515D21711E0E0063DB4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BC515B21711E0E0063DB4E /* Main.storyboard */; };
 		90BC515F21711E0E0063DB4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90BC515E21711E0E0063DB4E /* Assets.xcassets */; };
 		90BC516221711E0E0063DB4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BC516021711E0E0063DB4E /* LaunchScreen.storyboard */; };
-		90BC516D21711E0E0063DB4E /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC516C21711E0E0063DB4E /* Tests.swift */; };
+		90BC516D21711E0E0063DB4E /* EventStreamSpec_Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC516C21711E0E0063DB4E /* EventStreamSpec_Comparable.swift */; };
 		F582C6F0ABBFC842155F31E6 /* Pods_TestSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB35EC463AECE4BCAFB6FFB /* Pods_TestSuite.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,7 @@
 		90BC516121711E0E0063DB4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90BC516321711E0E0063DB4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90BC516821711E0E0063DB4E /* TestSuiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSuiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90BC516C21711E0E0063DB4E /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		90BC516C21711E0E0063DB4E /* EventStreamSpec_Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStreamSpec_Comparable.swift; sourceTree = "<group>"; };
 		90BC516E21711E0E0063DB4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DB35EC463AECE4BCAFB6FFB /* Pods_TestSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81E958A8DE9DD82854EC47B /* Pods-TestSuiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSuiteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestSuiteTests/Pods-TestSuiteTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +79,23 @@
 				F81E958A8DE9DD82854EC47B /* Pods-TestSuiteTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9025E1F8217131080089B25D /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				90BC516C21711E0E0063DB4E /* EventStreamSpec_Comparable.swift */,
+			);
+			path = Specs;
+			sourceTree = "<group>";
+		};
+		9025E1F9217131140089B25D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9025E1F421711FE60089B25D /* IntEvent.swift */,
+				9025E1F621711FF10089B25D /* StringEvent.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		90BC514B21711E0D0063DB4E = {
@@ -117,10 +134,9 @@
 		90BC516B21711E0E0063DB4E /* TestSuiteTests */ = {
 			isa = PBXGroup;
 			children = (
-				90BC516C21711E0E0063DB4E /* Tests.swift */,
+				9025E1F9217131140089B25D /* Models */,
+				9025E1F8217131080089B25D /* Specs */,
 				90BC516E21711E0E0063DB4E /* Info.plist */,
-				9025E1F421711FE60089B25D /* IntEvent.swift */,
-				9025E1F621711FF10089B25D /* StringEvent.swift */,
 			);
 			path = TestSuiteTests;
 			sourceTree = "<group>";
@@ -326,7 +342,7 @@
 			files = (
 				9025E1F721711FF10089B25D /* StringEvent.swift in Sources */,
 				9025E1F521711FE60089B25D /* IntEvent.swift in Sources */,
-				90BC516D21711E0E0063DB4E /* Tests.swift in Sources */,
+				90BC516D21711E0E0063DB4E /* EventStreamSpec_Comparable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
