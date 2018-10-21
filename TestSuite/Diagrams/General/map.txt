@@ -1,0 +1,5 @@
+marble map_add_5_test
+{
+    source a:     +(210)-(251)-(10)--5|
+    operator map_add5:  +(215)-(256)-(15)--(11)|
+}

@@ -1,0 +1,5 @@
+marble filter_even_test
+{
+    source a:     +(210)(251)-(10){5,15}--{10,500}|
+    operator filter_event:  +(210)--(10)---{10,500}|
+}

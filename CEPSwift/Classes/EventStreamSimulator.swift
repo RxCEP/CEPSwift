@@ -20,7 +20,7 @@ public class EventStreamSimulator<T> {
         let input = events.map(self.recorded)
         let xs = self.scheduler.createHotObservable(input)
         
-        let results = self.scheduler.start { () -> Observable<K> in
+        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) { () -> Observable<K> in
             handler(EventStream<T>(withObservable: xs.asObservable())).observable
         }
         
@@ -37,7 +37,7 @@ public class EventStreamSimulator<T> {
         let xs1 = self.scheduler.createHotObservable(input1)
         let xs2 = self.scheduler.createHotObservable(input2)
         
-        let results = self.scheduler.start { () -> Observable<K> in
+        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) { () -> Observable<K> in
             handler(EventStream<T>(withObservable: xs1.asObservable()),
                     EventStream<T>(withObservable: xs2.asObservable())
             ).observable

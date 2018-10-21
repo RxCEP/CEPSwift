@@ -9,9 +9,15 @@
 import Foundation
 import CEPSwift
 
-class IntEvent: Event, Comparable, Equatable {
+class IntEvent: Event, Comparable, Equatable, CustomStringConvertible {
     var timestamp: Date
     var value: Int
+    
+    var description: String {
+        get {
+            return "IntEvent -> \(value)"
+        }
+    }
     
     init(value: Int) {
         self.timestamp = Date()

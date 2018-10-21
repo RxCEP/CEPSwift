@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48129FAFA97D9335E908C40F /* Pods_TestSuiteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 669126ED824E336C29736096 /* Pods_TestSuiteTests.framework */; };
+		9012433D217CBFC000AB12B1 /* EventStreamSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9012433C217CBFC000AB12B1 /* EventStreamSpec.swift */; };
+		901C63DD2184DD70000496C2 /* ComplexEventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C63DC2184DD70000496C2 /* ComplexEventSpec.swift */; };
 		9025E1F521711FE60089B25D /* IntEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9025E1F421711FE60089B25D /* IntEvent.swift */; };
 		9025E1F721711FF10089B25D /* StringEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9025E1F621711FF10089B25D /* StringEvent.swift */; };
 		90BC515821711E0E0063DB4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC515721711E0E0063DB4E /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 		2B6C3A38145C7159EB4D05B3 /* Pods-TestSuite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSuite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestSuite/Pods-TestSuite.debug.xcconfig"; sourceTree = "<group>"; };
 		5AD0F94932B0161B23666EE5 /* Pods-TestSuiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSuiteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestSuiteTests/Pods-TestSuiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		669126ED824E336C29736096 /* Pods_TestSuiteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSuiteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9012433C217CBFC000AB12B1 /* EventStreamSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStreamSpec.swift; sourceTree = "<group>"; };
+		901C63DC2184DD70000496C2 /* ComplexEventSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexEventSpec.swift; sourceTree = "<group>"; };
 		9025E1F421711FE60089B25D /* IntEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntEvent.swift; sourceTree = "<group>"; };
 		9025E1F621711FF10089B25D /* StringEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEvent.swift; sourceTree = "<group>"; };
 		90BC515421711E0D0063DB4E /* TestSuite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				90BC516C21711E0E0063DB4E /* EventStreamSpec_Comparable.swift */,
+				9012433C217CBFC000AB12B1 /* EventStreamSpec.swift */,
+				901C63DC2184DD70000496C2 /* ComplexEventSpec.swift */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -341,6 +347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9025E1F721711FF10089B25D /* StringEvent.swift in Sources */,
+				9012433D217CBFC000AB12B1 /* EventStreamSpec.swift in Sources */,
+				901C63DD2184DD70000496C2 /* ComplexEventSpec.swift in Sources */,
 				9025E1F521711FE60089B25D /* IntEvent.swift in Sources */,
 				90BC516D21711E0E0063DB4E /* EventStreamSpec_Comparable.swift in Sources */,
 			);
