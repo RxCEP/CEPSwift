@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="350.0px"
+   width="450.0px"
    height="360.0px"
-   viewBox="0 0 350.0 360.0 "
+   viewBox="0 0 450.0 360.0 "
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -71,7 +71,7 @@
     <g id="source_a" transform="rotate(0 0.0 30) translate(0.0,30)">
   <path 
      style="fill:none;fill-rule:evenodd;stroke:#003080;stroke-width:2px;marker-end:url(#Arrow1Lend)"
-     d="m 0,0 347.0,0"
+     d="m 0,0 447.0,0"
      inkscape:connector-curvature="0" />
 
 <g style="filter:url(#filter3443)">
@@ -84,20 +84,7 @@
      y="7"
      x="25"
      style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">0</text>
-</g>
-
-<g style="filter:url(#filter3443)">
-  <circle
-     r="22"
-     cy="0"
-     cx="125.0"
-     style="opacity:1;fill:#48b3cd;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
-  <text
-     y="7"
-     x="125.0"
-     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">1</text>
+     xml:space="preserve">210</text>
 </g>
 
 <g style="filter:url(#filter3443)">
@@ -105,9 +92,9 @@
        ry="25px"
        rx="25px"
        y="-22"
-       x="200.0"
+       x="100.0"
        width="50.0"
-       height="100.0"
+       height="150.0"
        style="opacity:1;fill:white;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
 </g>
 
@@ -115,117 +102,145 @@
   <circle
      r="22"
      cy="3"
-     cx="225.0"
-     style="opacity:1;fill:#e5ff7c;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+     cx="125.0"
+     style="opacity:1;fill:#ffaacc;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
   <text
      y="10"
-     x="225.0"
+     x="125.0"
      style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">2</text>
+     xml:space="preserve">251</text>
 </g>
 
 <g style="filter:url(#filter3443)">
   <circle
      r="22"
      cy="53.0"
-     cx="225.0"
-     style="opacity:1;fill:#ececec;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+     cx="125.0"
+     style="opacity:1;fill:#e5ff7c;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
   <text
      y="60.0"
-     x="225.0"
-     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">3</text>
-</g>
-
-<g>
-   <path d="m 275.0,-12 0,24"
-       style="fill:none;fill-rule:evenodd;stroke:#003080;stroke-width:4px;" />
-</g>
-</g><g transform="translate(0 140.0)">
-<g style="filter:url(#filter3443)">
-  <rect
-     x="2"
-     y="0"
-     width="346.0"
-     height="80"
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1px;" />
-      <text
-         x="175.0"
-         y="40.0"
-         style="font-size:22px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-         xml:space="preserve">map_times_10</text>
-    </g>
-<g id="operator_map_times_10" transform="rotate(0 0.0 120) translate(0.0,120)">
-  <path 
-     style="fill:none;fill-rule:evenodd;stroke:#003080;stroke-width:2px;marker-end:url(#Arrow1Lend)"
-     d="m 0,0 347.0,0"
-     inkscape:connector-curvature="0" />
-
-<g style="filter:url(#filter3443)">
-  <circle
-     r="22"
-     cy="0"
-     cx="25"
-     style="opacity:1;fill:#ffcc00;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
-  <text
-     y="7"
-     x="25"
-     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">0</text>
-</g>
-
-<g style="filter:url(#filter3443)">
-  <circle
-     r="22"
-     cy="0"
-     cx="125.0"
-     style="opacity:1;fill:#a4ecff;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
-  <text
-     y="7"
      x="125.0"
      style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
      xml:space="preserve">10</text>
 </g>
 
 <g style="filter:url(#filter3443)">
-    <rect
-       ry="25px"
-       rx="25px"
-       y="-22"
-       x="200.0"
-       width="50.0"
-       height="100.0"
-       style="opacity:1;fill:white;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <circle
+     r="22"
+     cy="103.0"
+     cx="125.0"
+     style="opacity:1;fill:#ececec;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+  <text
+     y="110.0"
+     x="125.0"
+     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
+     xml:space="preserve">5</text>
 </g>
 
 <g style="filter:url(#filter3443)">
   <circle
      r="22"
-     cy="3"
-     cx="225.0"
-     style="opacity:1;fill:#a0c800;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+     cy="0"
+     cx="175.0"
+     style="opacity:1;fill:#a4ecff;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
   <text
-     y="10"
-     x="225.0"
+     y="7"
+     x="175.0"
      style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">20</text>
+     xml:space="preserve">15</text>
 </g>
 
 <g style="filter:url(#filter3443)">
   <circle
      r="22"
-     cy="53.0"
+     cy="0"
      cx="225.0"
-     style="opacity:1;fill:#ff3a3a;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+     style="opacity:1;fill:#e5ff7c;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
   <text
-     y="60.0"
+     y="7"
      x="225.0"
      style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
-     xml:space="preserve">30</text>
+     xml:space="preserve">10</text>
+</g>
+
+<g style="filter:url(#filter3443)">
+  <circle
+     r="22"
+     cy="0"
+     cx="325.0"
+     style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+  <text
+     y="7"
+     x="325.0"
+     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
+     xml:space="preserve">500</text>
 </g>
 
 <g>
-   <path d="m 275.0,-12 0,24"
+   <path d="m 375.0,-12 0,24"
+       style="fill:none;fill-rule:evenodd;stroke:#003080;stroke-width:4px;" />
+</g>
+</g><g transform="translate(0 190.0)">
+<g style="filter:url(#filter3443)">
+  <rect
+     x="2"
+     y="0"
+     width="446.0"
+     height="80"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1px;" />
+      <text
+         x="225.0"
+         y="40.0"
+         style="font-size:22px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
+         xml:space="preserve">max</text>
+    </g>
+<g id="operator_max" transform="rotate(0 0.0 120) translate(0.0,120)">
+  <path 
+     style="fill:none;fill-rule:evenodd;stroke:#003080;stroke-width:2px;marker-end:url(#Arrow1Lend)"
+     d="m 0,0 447.0,0"
+     inkscape:connector-curvature="0" />
+
+<g style="filter:url(#filter3443)">
+  <circle
+     r="22"
+     cy="0"
+     cx="25"
+     style="opacity:1;fill:#ffcc00;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+  <text
+     y="7"
+     x="25"
+     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
+     xml:space="preserve">210</text>
+</g>
+
+<g style="filter:url(#filter3443)">
+  <circle
+     r="22"
+     cy="0"
+     cx="125.0"
+     style="opacity:1;fill:#ffaacc;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+  <text
+     y="7"
+     x="125.0"
+     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
+     xml:space="preserve">251</text>
+</g>
+
+<g style="filter:url(#filter3443)">
+  <circle
+     r="22"
+     cy="0"
+     cx="325.0"
+     style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#003080;stroke-width:1px;" />
+  <text
+     y="7"
+     x="325.0"
+     style="font-size:20px;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;"
+     xml:space="preserve">500</text>
+</g>
+
+<g>
+   <path d="m 375.0,-12 0,24"
        style="fill:none;fill-rule:evenodd;stroke:#003080;stroke-width:4px;" />
 </g>
 </g></g>

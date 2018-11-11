@@ -6,28 +6,69 @@
 //  Copyright © 2018 Filipe Jordão. All rights reserved.
 //
 
+
+
 import Foundation
 import Quick
 import Nimble
 @testable import CEPSwift
-
 class EventStreamSpec: QuickSpec {
     override func spec() {
         describe("EventStream") {
-            
+            windowTest()
             mapping2()
-            //mappingTest()
-            //filterTest()
+            mappingTest()
+            filterTest()
         }
     }
     
+    private func windowTest() {
+        context("When applying a window over a EventStream") {
+            let input = [
+                (time: 1, event: IntEvent(value: 0)),
+                (time: 2, event: IntEvent(value: 1)),
+                (time: 5, event: IntEvent(value: 2)),
+                (time: 5, event: IntEvent(value: 3)),
+                (time: 5, event: IntEvent(value: 4)),
+                (time: 5, event: IntEvent(value: 5)),
+                (time: 6, event: IntEvent(value: 3)),
+                ]
+            
+            let expectedOutput = [(time: 2, event: [IntEvent(value: 3),
+                                                    IntEvent(value: 1)]),
+                                  (time: 5, event: [IntEvent(value: 2),
+                                                    IntEvent(value: 3),
+                                                    IntEvent(value: 4)]),
+                                  (time: 6, event: [IntEvent(value: 5),
+                                                    IntEvent(value: 3)])]
+            
+            func window(_ stream: EventStream<IntEvent>) -> EventStream<[IntEvent]> {
+                let resultStream = stream.window(ofTime: 2, max: 3)
+                
+                return resultStream
+            }
+            
+            let simulator = EventStreamSimulator<IntEvent>()
+            let output = simulator.simulate(with: input,
+                                            handler: window)
+            
+            it("Should output \(expectedOutput.count) elements") {
+                expect(output.count).to(equal(expectedOutput.count))
+            }
+            
+            it("Should output the expected events") {
+                zip(output, expectedOutput).forEach {
+                    expect($0.0.time).to(equal($0.1.time))
+                    expect($0.0.event).to(equal($0.1.event))
+                }
+            }
+        }
+    }
     private func mapping2() {
-        it("Can map") {
-            
-            
+        context("Can map") {
             let manager = EventManager<IntEvent>()
-            let originalEvents = [0, 1, 2, 3, 4, 5].map(IntEvent.init)
-            let expectedEvents = [0, 10, 20, 30, 40, 50].map(IntEvent.init)
+            let originalEvents = [0, 1, 2, 3].map(IntEvent.init)
+            let expectedEvents = [0, 10, 20, 30].map(IntEvent.init)
             var events = [IntEvent]()
             
             manager.stream
@@ -51,25 +92,28 @@ class EventStreamSpec: QuickSpec {
     private func mappingTest() {
         context("When mapping a EventStream") {
             let input = [
-                (time: 1, event: IntEvent(value: 210)),
-                (time: 3, event: IntEvent(value: 251)),
-                (time: 5, event: IntEvent(value: 10)),
-                (time: 8, event: IntEvent(value: 6)),
+                (time: 1, event: IntEvent(value: 0)),
+                (time: 3, event: IntEvent(value: 1)),
+                (time: 5, event: IntEvent(value: 2)),
+                (time: 5, event: IntEvent(value: 3)),
             ]
             
             let expectedOutput = [
-                (time: 1, event: IntEvent(value: 215)),
-                (time: 3, event: IntEvent(value: 256)),
-                (time: 5, event: IntEvent(value: 15)),
-                (time: 8, event: IntEvent(value: 11)),
+                (time: 1, event: IntEvent(value: 0)),
+                (time: 3, event: IntEvent(value: 10)),
+                (time: 5, event: IntEvent(value: 20)),
+                (time: 5, event: IntEvent(value: 30)),
             ]
             
-            let output = EventStreamSimulator()
-                .simulate(with: input) { (stream: EventStream<IntEvent>) in
-                    return stream.map(transform: { event -> IntEvent in
-                        return IntEvent(value: event.value + 5)
-                    })
+            func mapTimesTen(_ stream: EventStream<IntEvent>) -> EventStream<IntEvent> {
+                let resultStream = stream.map { IntEvent(value: $0.value * 10) }
+                
+                return resultStream
             }
+            
+            let simulator = EventStreamSimulator<IntEvent>()
+            let output = simulator.simulate(with: input,
+                                            handler: mapTimesTen)
             
             it("Should output \(expectedOutput.count) events") {
                 expect(output.count).to(equal(expectedOutput.count))
@@ -105,12 +149,15 @@ class EventStreamSpec: QuickSpec {
                 (time: 8, event: IntEvent(value: 500))
             ]
             
+            func filterEven(_ stream: EventStream<IntEvent>) -> EventStream<IntEvent> {
+                let resultStream = stream.filter { $0.value % 2 == 0 }
+                
+                return resultStream
+            }
+            
             let simulator = EventStreamSimulator<IntEvent>()
-            let output = simulator.simulate(with: input, handler: { (stream) -> EventStream<IntEvent> in
-                return stream.filter(predicate: { (event) -> Bool in
-                    return event.value % 2 == 0
-                })
-            })
+            let output = simulator.simulate(with: input,
+                                            handler: filterEven)
             
             it("Should output \(expectedOutput.count) elements") {
                 expect(output.count).to(equal(expectedOutput.count))
