@@ -16,7 +16,7 @@ class EventStreamSpec: QuickSpec {
     override func spec() {
         describe("EventStream") {
             windowTest()
-            mapping2()
+            followedByTest()
             mappingTest()
             filterTest()
         }
@@ -62,6 +62,30 @@ class EventStreamSpec: QuickSpec {
                     expect($0.0.event).to(equal($0.1.event))
                 }
             }
+        }
+    }
+    
+    private func followedByTest() {
+        context("When filtering tuples of increasing value") {
+            let input = [
+                (time: 1, event: IntEvent(value: 0)),
+                (time: 2, event: IntEvent(value: 1)),
+                (time: 5, event: IntEvent(value: 2)),
+                (time: 5, event: IntEvent(value: 3)),
+                (time: 5, event: IntEvent(value: 4)),
+                (time: 5, event: IntEvent(value: 5)),
+                (time: 6, event: IntEvent(value: 3)),
+                ]
+            
+            
+            func followedBy(_ stream: EventStream<IntEvent>) -> EventStream<(IntEvent, IntEvent)> {
+                return stream.followedBy { $0.value < $1.value }
+            }
+            
+            let simulator = EventStreamSimulator<IntEvent>()
+            let output = simulator.simulate(with: input, handler: followedBy)
+            
+            
         }
     }
     private func mapping2() {
@@ -131,7 +155,7 @@ class EventStreamSpec: QuickSpec {
     }
     
     private func filterTest() {
-        context("When filtering a EventStream") {
+        context("When filtering even events") {
             let input = [
                 (time: 1, event: IntEvent(value: 210)),
                 (time: 2, event: IntEvent(value: 251)),
@@ -175,8 +199,8 @@ class EventStreamSpec: QuickSpec {
     }
 }
 
-func == <T:Equatable, K:Equatable> (tuple1:(T,K),tuple2:(T,K)) -> Bool
-{
-    return (tuple1.0 == tuple2.0) && (tuple1.1 == tuple2.1)
+private func pairwiseTest() {
+    context("When") {
+        
+    }
 }
-

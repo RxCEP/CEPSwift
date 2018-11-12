@@ -34,6 +34,20 @@ class ComplexEventSimulator {
         return results.events.map (self.entry)
     }
     
+    public func simulate<T>(with events: [(time: Int, event: T)],
+                              handler: @escaping (EventStream<T>) -> ComplexEvent) -> [Int] {
+        let input = events.map(recorded)
+        
+        let xs = self.scheduler.createHotObservable(input)
+        
+        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) {
+            handler(EventStream<T>(withObservable: xs.asObservable())
+                ).startObserving()
+        }
+        
+        return results.events.map (self.entry)
+    }
+    
     private func recorded<K>(from entry: (time: Int, event: K)) -> Recorded<RxSwift.Event<K>> {
         return next(entry.time, entry.event)
     }

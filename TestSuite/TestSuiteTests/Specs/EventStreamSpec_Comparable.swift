@@ -12,6 +12,7 @@ class EventStreamSpecComparable: QuickSpec {
             maxTest()
             minTest()
             notInTest()
+            orderedTest()
             dropDuplicatesTest()
         }
     }
@@ -51,6 +52,7 @@ class EventStreamSpecComparable: QuickSpec {
                                   IntEvent(value: 210),
                                   IntEvent(value: 251)]),
                 (time: 7, event: [IntEvent(value: 5),
+                                  IntEvent(value: 10),
                                   IntEvent(value: 10),
                                   IntEvent(value: 15),
                                   IntEvent(value: 210),

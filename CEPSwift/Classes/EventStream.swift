@@ -34,13 +34,8 @@ public class EventStream<T> {
     }
     
     public func merge<R>(with stream: EventStream<R>) -> ComplexEvent {
-        let merged = Observable.merge(self.observable.map({ (element) -> (Any, Int) in
-            (element as Any, 1)
-        }), stream.observable.map({ (element) -> (Any, Int) in
-            (element as Any, 2)
-        }))
-        
-        return ComplexEvent(source: merged, count: 2)
+        return self.asComplexEvent()
+                   .merge(with: stream)
     }
     
     public func asComplexEvent() -> ComplexEvent {

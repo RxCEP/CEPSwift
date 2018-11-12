@@ -42,13 +42,35 @@ class ComplexEventSpec: QuickSpec {
                     expect(output.count).to(equal(expectedOutput.count))
                 }
                 
-                if output.count == expectedOutput.count {
-                    it("Should output the expected events") {
-                        zip(output, expectedOutput).forEach {
-                            expect($0.0).to(equal($0.1))
-                        }
-                    }
+                it("Should output the expected events") {
+                    expect(output).to(equal(expectedOutput))
                 }
+            }
+        }
+        
+        describe("When converting a EventStream to ComplexEvent") {
+            
+            let input = [(time: 205, event: IntEvent(value: 10)),
+                         (time: 210, event: IntEvent(value: 20)),
+                         (time: 225, event: IntEvent(value: 30)),
+                         (time: 227, event: IntEvent(value: 30)),
+                         (time: 228, event: IntEvent(value: 30))]
+            
+            let expectedOutput = [205, 210, 225, 227, 228]
+            
+            func asComplexEvent(_ stream: EventStream<IntEvent>) -> ComplexEvent {
+                return stream.asComplexEvent()
+            }
+            
+            let simulator = ComplexEventSimulator()
+            let output = simulator.simulate(with: input, handler: asComplexEvent)
+            
+            it("Should output \(expectedOutput.count) elements") {
+                expect(output.count).to(equal(expectedOutput.count))
+            }
+            
+            it("Should output the expected events") {
+                expect(output).to(equal(expectedOutput))
             }
         }
     }
