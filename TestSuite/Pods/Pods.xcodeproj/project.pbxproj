@@ -185,6 +185,7 @@
 		8F5081D310B7D8A27077B298C0325535 /* TestScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAA2F4E3A0DD45CAD04997EBB5378F /* TestScheduler.swift */; };
 		9012433B217CBEA000AB12B1 /* EventStream+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9012433A217CBEA000AB12B1 /* EventStream+Comparable.swift */; };
 		9096D686AB39D3475A4227F0765C3DC4 /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF64FAD5B98632CAC5A924A4595A9A52 /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		909C23A321A047990094E966 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C23A221A047990094E966 /* TypeAliases.swift */; };
 		90C27651217E19460073B1A2 /* ComplexEventSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C27650217E19460073B1A2 /* ComplexEventSimulator.swift */; };
 		90EE255029653A00D5F2462DE5FAB19A /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E07EB6FF987B57541B1BA337FB2C0AF /* Lock.swift */; };
 		9109BECE8DCF9566986A798C843568BA /* Quick.h in Headers */ = {isa = PBXBuildFile; fileRef = 03B8DD3AE8DFD2294BB354327B117440 /* Quick.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -571,6 +572,7 @@
 		8E7AF91EC4449FE5451CE0AFD3BB5524 /* CEPSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CEPSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDF93F4B6BE12CD9A8974F9389768B7 /* Deprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecated.swift; path = RxSwift/Deprecated.swift; sourceTree = "<group>"; };
 		9012433A217CBEA000AB12B1 /* EventStream+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventStream+Comparable.swift"; sourceTree = "<group>"; };
+		909C23A221A047990094E966 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		90C27650217E19460073B1A2 /* ComplexEventSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexEventSimulator.swift; sourceTree = "<group>"; };
 		91EBEC840EFA9E8ACA17E1E90FA501F6 /* Bag+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bag+Rx.swift"; path = "RxSwift/Extensions/Bag+Rx.swift"; sourceTree = "<group>"; };
 		938A00D757BC47B012B0115276983320 /* DefaultIfEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultIfEmpty.swift; path = RxSwift/Observables/DefaultIfEmpty.swift; sourceTree = "<group>"; };
@@ -1060,6 +1062,7 @@
 				65603E7483ED3EEAB5DEB6A4F3DE3522 /* ComplexEvent.swift */,
 				A1179EFEC3E3EAA60EAE20B11710444B /* Event.swift */,
 				5B7B9777A760F319B62B2589ED508195 /* EventManager.swift */,
+				909C23A221A047990094E966 /* TypeAliases.swift */,
 				2C52DCBED3918A703E620B16678A1055 /* EventStream.swift */,
 				9012433A217CBEA000AB12B1 /* EventStream+Comparable.swift */,
 				5C57AE4EDCCABFC9C10AA230EC8A4FEE /* EventStreamSimulator.swift */,
@@ -1753,6 +1756,7 @@
 				4647CD2D7C3005C0A0CE049D72B2910D /* CEPSwift-dummy.m in Sources */,
 				02A8251FC4E6D29ACE44AAB70FFA006D /* ComplexEvent.swift in Sources */,
 				E8CBE5B1B0E6E48B6A5DAAE88A278B3E /* Event.swift in Sources */,
+				909C23A321A047990094E966 /* TypeAliases.swift in Sources */,
 				AFE1243CCF6C1625EB5C16BD999F1AE9 /* EventManager.swift in Sources */,
 				A0F6ACCEB3F46FB398288CB8A814DA2B /* EventStream.swift in Sources */,
 				90C27651217E19460073B1A2 /* ComplexEventSimulator.swift in Sources */,

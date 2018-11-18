@@ -7,10 +7,9 @@
 //
 
 import Foundation
-
 import CEPSwift
 
-class StringEvent: Event, Comparable, Equatable {
+class StringEvent: Event, Equatable {
     var timestamp: Date
     var value: String
     
@@ -19,11 +18,7 @@ class StringEvent: Event, Comparable, Equatable {
         self.value = value
     }
     
-    static func <(lhs: StringEvent, rhs: StringEvent) -> Bool {
-        return lhs.value.count < rhs.value.count
-    }
-    
     static func ==(lhs: StringEvent, rhs: StringEvent) -> Bool {
-        return lhs.value.count == rhs.value.count
+        return lhs.value == rhs.value
     }
 }

@@ -9,23 +9,27 @@ import Foundation
 import RxTest
 import RxSwift
 
-class ComplexEventSimulator {
+public class ComplexEventSimulator {
     private var scheduler: TestScheduler
     
     public init() {
         self.scheduler = TestScheduler(initialClock: 0)
     }
 
-    public func simulate<T,K>(with events1: [(time: Int, event: T)],
-                              with events2: [(time: Int, event: K)],
-                              handler: @escaping (EventStream<T>, EventStream<K>) -> ComplexEvent) -> [Int] {
+    public func simulate<T,K>(with events1: [EventEntry<T>],
+                              with events2: [EventEntry<K>],
+                              handler: @escaping StreamsToComplex<T,K>
+                             ) -> [Int] {
+        
         let input1 = events1.map(recorded)
         let input2 = events2.map(recorded)
         
         let xs1 = self.scheduler.createHotObservable(input1)
         let xs2 = self.scheduler.createHotObservable(input2)
         
-        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) {
+        let results = self.scheduler.start(created: 0,
+                                           subscribed: 0,
+                                           disposed: 1000) {
             handler(EventStream<T>(withObservable: xs1.asObservable()),
                     EventStream<K>(withObservable: xs2.asObservable())
                 ).startObserving()
@@ -34,13 +38,16 @@ class ComplexEventSimulator {
         return results.events.map (self.entry)
     }
     
-    public func simulate<T>(with events: [(time: Int, event: T)],
-                              handler: @escaping (EventStream<T>) -> ComplexEvent) -> [Int] {
+    public func simulate<T>(with events: [EventEntry<T>],
+                            handler: @escaping StreamToComplex<T>) -> [Int] {
+        
         let input = events.map(recorded)
         
         let xs = self.scheduler.createHotObservable(input)
         
-        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) {
+        let results = self.scheduler.start(created: 0,
+                                           subscribed: 0,
+                                           disposed: 1000) {
             handler(EventStream<T>(withObservable: xs.asObservable())
                 ).startObserving()
         }
@@ -48,11 +55,14 @@ class ComplexEventSimulator {
         return results.events.map (self.entry)
     }
     
-    private func recorded<K>(from entry: (time: Int, event: K)) -> Recorded<RxSwift.Event<K>> {
+    private func recorded<K>(from entry: EventEntry<K>) -> Recorded<RxSwift.Event<K>> {
+        
         return next(entry.time, entry.event)
     }
     
     private func entry<K>(from recorded: Recorded<RxSwift.Event<K>>) -> Int {
+        
         return recorded.time
     }
 }
+

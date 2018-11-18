@@ -16,20 +16,25 @@ public class EventStreamSimulator<T> {
         self.scheduler = TestScheduler(initialClock: 0)
     }
     
-    public func simulate<K>(with events: [(time: Int, event: T)], handler: @escaping (EventStream<T>) -> EventStream<K>) -> [(time: Int, event: K)] {
+    public func simulate<K>(with events: [EventEntry<T>],
+                            handler: @escaping StreamToStream<T,K>) -> [EventEntry<K>] {
+        
         let input = events.map(self.recorded)
         let xs = self.scheduler.createHotObservable(input)
         
-        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) { () -> Observable<K> in
+        let results = self.scheduler.start(created: 0,
+                                           subscribed: 0,
+                                           disposed: 1000) { () -> Observable<K> in
+                                        
             handler(EventStream<T>(withObservable: xs.asObservable())).observable
         }
         
         return results.events.map (self.entry)
     }
     
-    public func simulate<K>(with events1: [(time: Int, event: T)],
-                         with events2: [(time: Int, event: T)],
-                         handler: @escaping (EventStream<T>, EventStream<T>) -> EventStream<K>) -> [(time: Int, event: K)] {
+    public func simulate<K>(with events1: [EventEntry<T>],
+                         with events2: [EventEntry<T>],
+                         handler: @escaping StreamsToStream<T,K>) -> [EventEntry<K>] {
         
         let input1 = events1.map(self.recorded)
         let input2 = events2.map(self.recorded)
@@ -37,7 +42,10 @@ public class EventStreamSimulator<T> {
         let xs1 = self.scheduler.createHotObservable(input1)
         let xs2 = self.scheduler.createHotObservable(input2)
         
-        let results = self.scheduler.start(created: 0, subscribed: 0, disposed: 1000) { () -> Observable<K> in
+        let results = self.scheduler.start(created: 0,
+                                           subscribed: 0,
+                                           disposed: 1000) { () -> Observable<K> in
+                                            
             handler(EventStream<T>(withObservable: xs1.asObservable()),
                     EventStream<T>(withObservable: xs2.asObservable())
             ).observable
@@ -46,11 +54,11 @@ public class EventStreamSimulator<T> {
         return results.events.map (self.entry)
     }
     
-    private func recorded<K>(from entry: (time: Int, event: K)) -> Recorded<RxSwift.Event<K>> {
+    private func recorded<K>(from entry: EventEntry<K>) -> Recorded<RxSwift.Event<K>> {
         return next(entry.time, entry.event)
     }
     
-    private func entry<K>(from recorded: Recorded<RxSwift.Event<K>>) -> (time: Int, event: K) {
+    private func entry<K>(from recorded: Recorded<RxSwift.Event<K>>) -> EventEntry<K> {
         return (time: recorded.time, event: recorded.value.element!)
     }
 }

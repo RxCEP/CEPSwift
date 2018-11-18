@@ -85,4 +85,19 @@ public class EventStream<T> {
         
         return EventStream<[T]>(withObservable: newObservable)
     }
+    
+    /**
+     Creates a **EventStream** that emits a dictionary containing lists of events grouped by the result of a keying function.
+     */
+    public func group<K>(by keyed: @escaping (T) -> K) -> EventStream<[K: [T]]> {
+        let newObservable = self.observable
+            .scan([K: [T]]()) { (groups, elem) in
+                let key = keyed(elem)
+                let newGroup = [key: [elem]]
+                
+                return groups.merging(newGroup) { $0 + $1 }
+        }
+        
+        return EventStream<[K: [T]]>(withObservable: newObservable)
+    }
 }

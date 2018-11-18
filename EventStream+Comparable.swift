@@ -49,8 +49,9 @@ extension EventStream where T: Comparable {
      Creates a new **EventStream** that emits only unique events.
      */
     public func dropDuplicates() -> EventStream<T> {
+        let accObservable = self.accumulated().observable
         let newObservable = self.observable
-            .withLatestFrom(self.accumulated().observable) { (event, acc) -> (T,[T]) in
+            .withLatestFrom(accObservable) { (event, acc) -> (T,[T]) in
                 return (event, acc)
             }
             .filter { (event, acc) -> Bool in
@@ -67,7 +68,8 @@ extension EventStream where T: Comparable {
      - parameter stream: The **EventStream** which will be performed the union with.
      */
     public func union(with stream: EventStream<T>) -> EventStream<T> {
-        let newObservable = Observable.merge([self.observable, stream.observable])
+        let newObservable = Observable.merge([self.observable,
+                                              stream.observable])
         
         return EventStream<T>(withObservable: newObservable).dropDuplicates()
     }
@@ -78,10 +80,13 @@ extension EventStream where T: Comparable {
      - parameter stream: The **EventStream** which emit events that are ignored by the new **EventStream**
      */
     public func not(in stream: EventStream<T>) -> EventStream<T> {
-        let streamAcc = EventStream<[T]>(withObservable: stream.accumulated().observable.startWith([]))
+        let obsAcc = stream.accumulated()
+            .observable
+            .startWith([])
         
-        let newObservable = self.observable.withLatestFrom(streamAcc.observable) { (event, acc) -> (T, [T]) in
-            return (event,acc)
+        let newObservable = self.observable
+            .withLatestFrom(obsAcc) { (event, acc) -> (T, [T]) in
+                return (event,acc)
             }.filter { (event, acc) -> Bool in
                 return acc.filter { $0 == event }.count == 0
             }
@@ -99,13 +104,22 @@ extension EventStream where T: Comparable {
         let selfAcc = self.accumulated()
         let streamAcc = stream.accumulated()
         
-        let selfInStream = self.observable.withLatestFrom(streamAcc.observable, resultSelector: self.isElem).filter { $0 != nil }
+        let selfInStream = self.observable
+            .withLatestFrom(streamAcc.observable,
+                            resultSelector: self.isElem)
+            .filter { $0 != nil }
         
-        let streamInSelf = stream.observable.withLatestFrom(selfAcc.observable, resultSelector: self.isElem).filter { $0 != nil }
+        let streamInSelf = stream.observable
+            .withLatestFrom(selfAcc.observable,
+                            resultSelector: self.isElem)
+            .filter { $0 != nil }
         
-        let newObservable = Observable.merge([selfInStream, streamInSelf])
+        let newObservable = Observable.merge([selfInStream,
+                                              streamInSelf])
             .map { $0! }
-        return EventStream<T>(withObservable: newObservable).dropDuplicates()
+        
+        return EventStream<T>(withObservable: newObservable)
+            .dropDuplicates()
     }
     
     private func isElem(_ elem: T, in array: [T]) throws -> T? {

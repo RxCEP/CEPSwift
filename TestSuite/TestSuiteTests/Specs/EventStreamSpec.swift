@@ -19,6 +19,7 @@ class EventStreamSpec: QuickSpec {
             followedByTest()
             mappingTest()
             filterTest()
+            groupedByTest()
         }
     }
     
@@ -71,12 +72,19 @@ class EventStreamSpec: QuickSpec {
                 (time: 1, event: IntEvent(value: 0)),
                 (time: 2, event: IntEvent(value: 1)),
                 (time: 5, event: IntEvent(value: 2)),
+                (time: 5, event: IntEvent(value: 1)),
                 (time: 5, event: IntEvent(value: 3)),
                 (time: 5, event: IntEvent(value: 4)),
                 (time: 5, event: IntEvent(value: 5)),
                 (time: 6, event: IntEvent(value: 3)),
                 ]
-            
+            let expectedOutput = [
+                (time: 2, event: (IntEvent(value: 0), IntEvent(value: 1))),
+                (time: 5, event: (IntEvent(value: 1), IntEvent(value: 2))),
+                (time: 5, event: (IntEvent(value: 1), IntEvent(value: 3))),
+                (time: 5, event: (IntEvent(value: 3), IntEvent(value: 4))),
+                (time: 5, event: (IntEvent(value: 4),IntEvent(value: 5))),
+                ]
             
             func followedBy(_ stream: EventStream<IntEvent>) -> EventStream<(IntEvent, IntEvent)> {
                 return stream.followedBy { $0.value < $1.value }
@@ -85,6 +93,17 @@ class EventStreamSpec: QuickSpec {
             let simulator = EventStreamSimulator<IntEvent>()
             let output = simulator.simulate(with: input, handler: followedBy)
             
+            it("Should output \(expectedOutput.count) elements") {
+                expect(output.count).to(equal(expectedOutput.count))
+            }
+            
+            it("Should output the expected events") {
+                zip(output, expectedOutput).forEach {
+                    expect($0.0.time).to(equal($0.1.time))
+                    expect($0.0.event.0).to(equal($0.1.event.0))
+                    expect($0.0.event.1).to(equal($0.1.event.1))
+                }
+            }
             
         }
     }
@@ -197,10 +216,49 @@ class EventStreamSpec: QuickSpec {
             }
         }
     }
-}
-
-private func pairwiseTest() {
-    context("When") {
-        
+    
+    private func groupedByTest() {
+        context("When grouping even and odd events") {
+            let input = [
+                (time: 1, event: IntEvent(value: 0)),
+                (time: 3, event: IntEvent(value: 1)),
+                (time: 5, event: IntEvent(value: 2)),
+                (time: 5, event: IntEvent(value: 3)),
+                ]
+            
+            let expectedOutput = [
+                (time: 1, event: [true: [IntEvent(value: 0)]]),
+                (time: 3, event: [true: [IntEvent(value: 0)],
+                                  false: [IntEvent(value: 1)]]),
+                (time: 5, event: [true: [IntEvent(value: 0),
+                                         IntEvent(value: 2)],
+                                  false: [IntEvent(value: 1)]]),
+                (time: 5, event: [true: [IntEvent(value: 0),
+                                         IntEvent(value: 2)],
+                                  false: [IntEvent(value: 1),
+                                          IntEvent(value: 3)]]),
+            ]
+            
+            func groupedByEvenOrNot(stream: EventStream<IntEvent>) -> EventStream<[Bool: [IntEvent]]> {
+                return stream.group { $0.value % 2 == 0}
+            }
+            
+            let simulator = EventStreamSimulator<IntEvent>()
+            let output = simulator.simulate(with: input,
+                                            handler: groupedByEvenOrNot)
+            
+            it("Should output \(expectedOutput.count) elements") {
+                expect(output.count).to(equal(expectedOutput.count))
+            }
+            
+            it("Should output the expected events") {
+                for (idx, elem) in expectedOutput.enumerated() {
+                    let outputElem = output[idx]
+                    
+                    expect(outputElem.time).to(equal(elem.time))
+                    expect(outputElem.event).to(equal(elem.event))
+                }
+            }
+        }
     }
 }
