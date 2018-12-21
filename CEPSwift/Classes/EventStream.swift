@@ -34,13 +34,8 @@ public class EventStream<T> {
     }
     
     public func merge<R>(with stream: EventStream<R>) -> ComplexEvent {
-        let merged = Observable.merge(self.observable.map({ (element) -> (Any, Int) in
-            (element as Any, 1)
-        }), stream.observable.map({ (element) -> (Any, Int) in
-            (element as Any, 2)
-        }))
-        
-        return ComplexEvent(source: merged, count: 2)
+        return self.asComplexEvent()
+                   .merge(with: stream)
     }
     
     public func asComplexEvent() -> ComplexEvent {
@@ -79,23 +74,30 @@ public class EventStream<T> {
         
         return EventStream<(T,T)>(withObservable: observable)
     }
-}
-
-extension EventStream where T: Comparable {
-    public func max(onNext: @escaping((_ max: T?) -> Void)) {
-        _ = self.observable.scan([]) { lastSlice, newValue in
-            return Array(lastSlice + [newValue])
-            }.subscribe { (value) in
-                onNext(value.element?.max())
+    
+    /**
+     Creates a **EventStream** that emit a list of events occured until the moment
+    */
+    public func accumulated() -> EventStream<[T]> {
+        let newObservable = self.observable.scan([]) { acc, val in
+            return Array(acc + [val])
         }
+        
+        return EventStream<[T]>(withObservable: newObservable)
     }
     
-    public func min(onNext: @escaping((_ min: T?) -> Void)) {
-        _ = self.observable.scan([]) { lastSlice, newValue in
-            return Array(lastSlice + [newValue])
-            }.subscribe { (value) in
-                onNext(value.element?.min())
+    /**
+     Creates a **EventStream** that emits a dictionary containing lists of events grouped by the result of a keying function.
+     */
+    public func group<K>(by keyed: @escaping (T) -> K) -> EventStream<[K: [T]]> {
+        let newObservable = self.observable
+            .scan([K: [T]]()) { (groups, elem) in
+                let key = keyed(elem)
+                let newGroup = [key: [elem]]
+                
+                return groups.merging(newGroup) { $0 + $1 }
         }
+        
+        return EventStream<[K: [T]]>(withObservable: newObservable)
     }
 }
-

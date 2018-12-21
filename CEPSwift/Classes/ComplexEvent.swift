@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 public class ComplexEvent {
-    private var observable: Observable<(Any, Int)>
+    internal var observable: Observable<(Any, Int)>
     private var numberOfEvents: Int
     private var operation: Operation
     private var maxTimeBetween: Int
@@ -35,18 +35,24 @@ public class ComplexEvent {
     }
     
     public func subscribe(completion: @escaping (() -> Void)) {
-        _ = self.observable.buffer(timeSpan: RxTimeInterval(maxTimeBetween), count: numberOfEvents, scheduler: MainScheduler.instance).subscribe { (buffer) in
-            guard let events = buffer.element else { return }
-            var values = Set<Int>()
-            
-            for item in events {
-                values.insert(item.1)
-            }
-            
-            if values.count == self.numberOfEvents {
-                completion()
-            }
-        }
+        let _ = startObserving()
+        .subscribe(onNext: { _ in completion() })
+    }
+    
+    func startObserving() -> Observable<()> {
+        
+        return self.observable.buffer(timeSpan: RxTimeInterval(maxTimeBetween), count: numberOfEvents, scheduler: MainScheduler.instance)
+            .map({ events in
+                var values = Set<Int>()
+                
+                for item in events {
+                    values.insert(item.1)
+                }
+                
+                return values.count
+            })
+            .filter { $0 >= self.numberOfEvents }
+            .map { _ in }
     }
 }
 

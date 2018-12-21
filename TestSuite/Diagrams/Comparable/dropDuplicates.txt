@@ -1,0 +1,5 @@
+marble drop_duplicates_test
+{
+    source a:     +(210)-{251,10}{5,15,10}-(251)|
+    operator dropDuplicates: +(210)-{251,10}{5,15}--|
+}

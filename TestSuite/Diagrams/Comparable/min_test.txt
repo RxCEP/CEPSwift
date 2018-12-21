@@ -1,0 +1,5 @@
+marble min_test
+{
+    source a:     +{50,10,{30}5|
+    operator min: +{50,10}-5|
+}

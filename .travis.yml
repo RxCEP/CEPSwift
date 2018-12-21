@@ -1,4 +1,4 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode10
 script:
-  - cd ./Example && bundle install && bundle exec fastlane test
+  - cd ./TestSuite && bundle install && bundle exec fastlane test

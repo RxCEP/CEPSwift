@@ -1,0 +1,6 @@
+marble intersect_test
+{
+    source a:     +1248(16)(32)(64)|
+    source b:     +{0,32}-(99)8{1,100}--|
+    operator intersect: +---81(32)-|
+}

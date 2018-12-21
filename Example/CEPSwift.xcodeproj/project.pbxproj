@@ -18,6 +18,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		90A1AC7620A9BC2E00BD613F /* IntEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E10ABE41FD0D04F0058C319 /* IntEvent.swift */; };
 		9B51C2901CE28C83F49B194F /* Pods_CEPSwift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E991A02B8C748A73E0611C72 /* Pods_CEPSwift_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +36,7 @@
 		1E3A36CA30B6F95287C8F745 /* Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3EA08A5AF0C29F14424139A7 /* Pods-CEPSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEPSwift_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEPSwift_Example/Pods-CEPSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		493B3B8A306D67E0277D9374 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		4ADB24483E53A9DEF2B4EFC2 /* CEPSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CEPSwift.podspec; path = ../CEPSwift.podspec; sourceTree = "<group>"; };
+		4ADB24483E53A9DEF2B4EFC2 /* CEPSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CEPSwift.podspec; path = ../CEPSwift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5DFD9220E9CDC645327BA3CA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5E10ABE41FD0D04F0058C319 /* IntEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntEvent.swift; sourceTree = "<group>"; };
 		5E10ABE61FD0EB150058C319 /* StringEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEvent.swift; sourceTree = "<group>"; };
@@ -303,6 +304,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Example-CEPSwift_Tests/Pods-CEPSwift_Example-CEPSwift_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CEPSwift/CEPSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -310,6 +312,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CEPSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -327,11 +330,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CEPSwift_Example/Pods-CEPSwift_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CEPSwift/CEPSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CEPSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -363,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A1AC7620A9BC2E00BD613F /* IntEvent.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				5EA136A21FA10768006DD03C /* LocationEvent.swift in Sources */,
 				5EA136A01FA10760006DD03C /* PedometerEvent.swift in Sources */,
@@ -515,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R9WHX95423;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CEPSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -531,6 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R9WHX95423;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CEPSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -546,6 +554,7 @@
 			baseConfigurationReference = 89472E8605C547CA2F3ECB11 /* Pods-CEPSwift_Example-CEPSwift_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = R9WHX95423;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -568,6 +577,7 @@
 			baseConfigurationReference = 1E3A36CA30B6F95287C8F745 /* Pods-CEPSwift_Example-CEPSwift_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = R9WHX95423;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

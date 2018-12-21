@@ -1,0 +1,5 @@
+marble filtering_diagram
+{
+    source a:     +(210)(251)-(10){5,15}--{10,500}|
+    operator filter_even:  +(210)--(10)---{10,500}|
+}

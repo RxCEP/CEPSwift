@@ -1,0 +1,6 @@
+marble not_in_test
+{
+    source a:     +-{1,2}48(16)(32)(64)|
+    source b:     +{1,2}-(16)-(32)--|
+    operator notIn: +--48--(64)|
+}
