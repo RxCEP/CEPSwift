@@ -62,16 +62,16 @@ public class EventStream<T> {
     }
     
     public func tumbling(_ count: Int, time: Int) -> EventStream<Observable<T>> {
-        let window = self.observable.window(timeSpan: RxTimeInterval(time + 1),
-                                            count: count + 1,
+        let window = self.observable.window(timeSpan: RxTimeInterval(time),
+                                            count: count,
                                             scheduler: MainScheduler.instance)
         
         return EventStream<Observable<T>>(withObservable: window)
     }
     
     public func pane(_ count: Int, time: Int) -> EventStream<Observable<T>> {
-        let window = self.observable.window(timeSpan: RxTimeInterval(time),
-                                            count: count,
+        let window = self.observable.window(timeSpan: RxTimeInterval(time + 1),
+                                            count: count + 1,
                                             scheduler: MainScheduler.instance)
         
         return EventStream<Observable<T>>(withObservable: window)
